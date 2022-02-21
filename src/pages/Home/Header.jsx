@@ -1,7 +1,15 @@
 import React from "react";
+import SelectInput from "../../components/Input/SelectInput";
+
+const selectItems = [
+  { USA: "United States Of America" },
+  { UK: "United Kingdom" },
+  { USSR: "Russia" }
+];
+
 
 const Header = () => {
-  return <div>Header</div>;
+  return <SelectInput items={selectItems} /> ;
 };
 
 export default Header;
