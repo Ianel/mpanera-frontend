@@ -1,11 +1,11 @@
 import React from "react";
+import Navbar from "../components/Navbar";
 
 export const MainLayout = ({ children }) => {
   return (
     <div>
-      <main className="flex flex-col items-center justify-center bg-gray-100 h-screen">
-        {children}
-      </main>
+      <Navbar />
+      <main>{children}</main>
     </div>
   );
 };
