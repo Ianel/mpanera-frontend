@@ -3,7 +3,11 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        login: 'url("./src/assets/images/login.jpeg")',
+        login: 'url("./src/assets/images/register.jpeg")',
+      },
+      colors: {
+        primary: "#8EA5D9",
+        secondary: "#414E73",
       },
     },
   },
