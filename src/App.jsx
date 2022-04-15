@@ -6,6 +6,7 @@ import LoginPage from "@/pages/Login";
 import Mainpage from "@/pages/Home/Main";
 import AboutPage from "@/pages/About";
 import { HomePage } from "@/pages/Home";
+import RegisterPage from "./pages/Register";
 
 export const App = () => {
   const [user] = useAuthState(auth);
@@ -15,6 +16,7 @@ export const App = () => {
       <Routes>
         <Route path="/" element={<HomePage />}></Route>
         <Route path="/login" element={<LoginPage />}></Route>
+        <Route path="/register" element={<RegisterPage />}></Route>
         <Route
           path="/about"
           element={user ? <Mainpage /> : <LoginPage />}
