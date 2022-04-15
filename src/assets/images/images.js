@@ -1,5 +1,5 @@
-import avatar from "./avatar1.png";
-import mac from "./mac.jpg";
-import logo from "./logo.png";
+import avatar from "@/assets/images/avatar1.png";
+import mac from "@/assets/images/mac.jpg";
+import logo from "@/assets/images/logo-mpanera.png";
 
 export { avatar, mac, logo };

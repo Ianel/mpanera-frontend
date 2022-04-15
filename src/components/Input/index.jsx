@@ -11,7 +11,7 @@ const Input = (props) => {
       onChange={(e) => {
         states.input[props.name] = e.target.value;
       }}
-      className={`border-2 py-3 rounded-md ${props.className} ${props.bordercolor}`}
+      className={`border-2 p-2 rounded-md ${props.className} ${props.bordercolor}`}
     />
   );
 };

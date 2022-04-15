@@ -5,12 +5,52 @@ import {
   RecaptchaVerifier,
   signInWithPhoneNumber,
 } from "firebase/auth";
+import { Link } from "react-router-dom";
+import { logo } from "@/assets/images/images";
+import Input from "@/components/Input";
+import { Button } from "@/components/Buttons";
 
 const LoginPage = () => {
   return (
-    <div>
-      <input type="tel" placeholder="Entrer votre numéro de telephone" />
-      <button>S'isncrire</button>
+    <div className="bg-login bg-cover h-screen lg:flex lg:flex-row text-white">
+      <div className="lg:w-1/2 bg-gradient-to-r from-blue-900 h-full py-4 px-16 lg:flex lg:flex-col">
+        <nav className="lg:flex lg:flex-row lg:justify-between">
+          <div className="lg:flex lg:flex-row lg:items-center">
+            <img className="w-12" src={logo} alt="mpanera logo" />
+            <h1 className="h1 lg:text-xl">Mpanera</h1>
+          </div>
+          <div className="lg:flex lg:flex-row lg:justify-around lg:items-center">
+            <div className="mx-8">
+              <Link to="/register">Inscription</Link>
+              <div className="lg:w-6 lg:h-1 bg-transparent"></div>
+            </div>
+            <div>
+              <Link to="/login">Connexion</Link>
+              <div className="lg:w-6 lg:h-1 bg-white"></div>
+            </div>
+          </div>
+        </nav>
+        <div className="grid content-center h-full">
+          <div className="w-2/3">
+            <div className="flex flex-col">
+              <label className="mb-2">Numéro de télephone</label>
+              <Input
+                className="mb-10"
+                type="tel"
+                placeholder="+261 32 00 000 00"
+              />
+              <Button className="mb-4">Se connecter</Button>
+            </div>
+            <div className="flex lg:flex-row">
+              <p>Vous n'avez pas de compte ?</p>
+              <Link className="mx-1 font-bold text-blue-500" to={"/register"}>
+                S'inscrire
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="lg:w-1/2 h-full opacity-50"></div>
     </div>
   );
 };

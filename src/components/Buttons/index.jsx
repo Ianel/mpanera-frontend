@@ -19,7 +19,7 @@ export const Button = (props) => {
     <button
       className={`${
         props.wide && "w-full"
-      } px-4 py-3 ${setColor()} text-white rounded-md ${props.className}`}
+      } p-2 ${setColor()} text-white rounded-md ${props.className}`}
       onClick={props.onClick}
       size={props.size}
     >
