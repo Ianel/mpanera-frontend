@@ -9,11 +9,15 @@ import { Link } from "react-router-dom";
 import { logo } from "@/assets/images/images";
 import Input from "@/components/Input";
 import { Button } from "@/components/Buttons";
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/style.css";
 
 const LoginPage = () => {
+  const [phone, setPhone] = useState("");
+
   return (
-    <div className="bg-login bg-cover h-screen lg:flex lg:flex-row text-white">
-      <div className="lg:w-1/2 bg-gradient-to-r from-blue-900 h-full py-4 px-16 lg:flex lg:flex-col">
+    <div className="bg-login bg-cover bg-center h-screen lg:flex lg:flex-row text-white">
+      <div className="lg:w-1/2 bg-gradient-to-r from-primary to-blue-300 h-full py-4 px-16 lg:flex lg:flex-col">
         <nav className="lg:flex lg:flex-row lg:justify-between">
           <div className="lg:flex lg:flex-row lg:items-center">
             <img className="w-12" src={logo} alt="mpanera logo" />
@@ -34,23 +38,39 @@ const LoginPage = () => {
           <div className="w-2/3">
             <div className="flex flex-col">
               <label className="mb-2">Numéro de télephone</label>
-              <Input
+              {/*  <Input
                 className="mb-10"
                 type="tel"
                 placeholder="+261 32 00 000 00"
+              /> */}
+              <PhoneInput
+                value={phone}
+                inputStyle={{ width: "100%" }}
+                placeholder="+261 32 00 450 25"
+                className="text-black mb-10"
+                country={"mg"}
+                specialLabel="Numéro de télephone"
+                onChange={(phone) => setPhone(phone)}
               />
-              <Button className="mb-4">Se connecter</Button>
+              <label className="mb-2">Mot de passe</label>
+              <Input
+                className="mb-10 h-9 rounded"
+                type="tel"
+                placeholder="Au moins 8 caractères"
+                bordercolor="transparent"
+              />
+              <Button className="mb-4 h-9 bg-secondary">Se connecter</Button>
             </div>
             <div className="flex lg:flex-row">
               <p>Vous n'avez pas de compte ?</p>
-              <Link className="mx-1 font-bold text-blue-500" to={"/register"}>
+              <Link className="mx-1 font-bold text-secondary" to={"/register"}>
                 S'inscrire
               </Link>
             </div>
           </div>
         </div>
       </div>
-      <div className="lg:w-1/2 h-full opacity-50"></div>
+      <div className="lg:w-1/2 bg-gradient-to-r from-blue-300 h-full"></div>
     </div>
   );
 };
