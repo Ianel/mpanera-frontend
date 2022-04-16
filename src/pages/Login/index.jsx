@@ -17,25 +17,25 @@ const LoginPage = () => {
 
   return (
     <div className="bg-login bg-cover bg-center h-screen lg:flex lg:flex-row text-white">
-      <div className="lg:w-1/2 bg-gradient-to-r from-primary to-blue-300 h-full py-4 px-16 lg:flex lg:flex-col">
-        <nav className="lg:flex lg:flex-row lg:justify-between">
-          <div className="lg:flex lg:flex-row lg:items-center">
+      <div className="lg:w-1/2 w-screen bg-gradient-to-r from-primary to-blue-300 h-full px-8 py-4 lg:px-16 lg:flex lg:flex-col">
+        <nav className="flex flex-col md:flex-row md:justify-between">
+          <div className="flex lg:flex-row items-center">
             <img className="w-12" src={logo} alt="mpanera logo" />
             <h1 className="h1 lg:text-xl">Mpanera</h1>
           </div>
-          <div className="lg:flex lg:flex-row lg:justify-around lg:items-center">
-            <div className="mx-8">
+          <div className="md:flex flex-col items-start md:flex-row md:justify-around md:items-center">
+            <div className="md:mx-8">
               <Link to="/register">Inscription</Link>
-              <div className="lg:w-6 lg:h-1 bg-transparent"></div>
+              <div className="md:w-6 md:h-1 bg-transparent md:m-0 mb-3"></div>
             </div>
             <div>
               <Link to="/login">Connexion</Link>
-              <div className="lg:w-6 lg:h-1 bg-white"></div>
+              <div className="md:w-6 h-1 w-full bg-white"></div>
             </div>
           </div>
         </nav>
-        <div className="grid content-center h-full">
-          <div className="w-2/3">
+        <div className="grid content-center h-4/5 lg:h-full">
+          <div className="lg:w-2/3 w-full">
             <div className="flex flex-col">
               <label className="mb-2">Numéro de télephone</label>
               {/*  <Input
@@ -70,7 +70,7 @@ const LoginPage = () => {
           </div>
         </div>
       </div>
-      <div className="lg:w-1/2 bg-gradient-to-r from-blue-300 h-full"></div>
+      <div className="lg:w-1/2 hidden bg-gradient-to-r from-blue-300 h-full"></div>
     </div>
   );
 };
