@@ -70,7 +70,7 @@ const LoginPage = () => {
           </div>
         </div>
       </div>
-      <div className="lg:w-1/2 hidden bg-gradient-to-r from-blue-300 h-full"></div>
+      <div className="lg:w-1/2 lg:block hidden bg-gradient-to-r from-blue-300 h-full"></div>
     </div>
   );
 };
