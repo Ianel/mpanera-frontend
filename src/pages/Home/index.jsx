@@ -12,13 +12,8 @@ import { states } from "../../states";
 
 export const HomePage = () => {
   useEffect(() => {
-    states.selectedLink = "home";
+    states.selectedLink = "accueil";
   }, []);
 
-  return (
-    <MainLayout>
-      <Header />
-      <Engagements />
-    </MainLayout>
-  );
+  return <MainLayout>Hello World</MainLayout>;
 };
