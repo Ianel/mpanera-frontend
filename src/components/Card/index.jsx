@@ -36,7 +36,7 @@ const MainCard = ({ src, items }) => {
           return <li key={`li${index}`}>{item}</li>;
         })}
       </ul>
-      <Button className="text-sm absolute bottom-4 right-4 flex lg:flex-row justify-between items-center rounded-2xl px-4">
+      <Button className="text-sm mt-4 w-full flex lg:flex-row justify-center items-center rounded-2xl px-4">
         <MdShoppingCart className="mr-2" />
         <span>Ajouter au panier</span>
       </Button>
