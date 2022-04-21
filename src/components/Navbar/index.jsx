@@ -6,6 +6,7 @@ import { Button } from "@/components/Buttons";
 import { logoBlue, mac } from "@/assets/images/images";
 import Input from "../Input";
 import Avatar from "../Avatar";
+import { MdNotifications, MdSearch } from "react-icons/md";
 
 const links = [
   { title: "Accueil", link: "/" },
@@ -16,7 +17,7 @@ const links = [
 const Navbar = (props) => {
   const { selectedLink } = useSnapshot(states);
   return (
-    <nav className="py-4 flex px-4 items-center justify-between">
+    <nav className="py-4 flex px-8 items-center justify-between">
       <div className="flex flex-row items-center justify-between">
         <div className="flex flex-row items-center">
           <img className="w-12 h-12" src={logoBlue} alt="logo" />
@@ -36,7 +37,15 @@ const Navbar = (props) => {
         </ul>
       </div>
       <div className="flex flex-row items-center justify-between">
-        <Input className="h-9" type="search" placeholder="Recherche" />
+        <div className="flex flex-row items-center border-zinc-500 border-2 px-4 rounded-md">
+          <MdSearch />
+          <Input
+            className="h-9 border-transparent focus:outline-none"
+            type="search"
+            placeholder="Recherche"
+          />
+        </div>
+        <MdNotifications className="ml-8" size={"24"} />
         <Avatar src={mac} className="mx-8 border-none object-cover" size="sm" />
         <Button className="px-4">Publier</Button>
       </div>
