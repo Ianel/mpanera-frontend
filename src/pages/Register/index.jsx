@@ -8,6 +8,9 @@ import "react-phone-input-2/lib/style.css";
 
 const RegisterPage = () => {
   const [phone, setPhone] = useState("");
+  const [phoneInput, setPhoneInput] = useState(true);
+  const [passwordInput, setPasswordInput] = useState(false);
+  const [passwordInput2, setPasswordInput2] = useState(false);
 
   return (
     <div className="bg-login bg-cover bg-center h-screen lg:flex lg:flex-row text-white">
@@ -30,24 +33,61 @@ const RegisterPage = () => {
         </nav>
         <div className="grid content-center h-4/5 lg:h-full">
           <div className="lg:w-2/3 w-full">
-            <div className="flex flex-col">
-              <label className="mb-2">Numéro de télephone</label>
-              {/*  <Input
-                className="mb-10"
-                type="tel"
-                placeholder="+261 32 00 000 00"
-              /> */}
-              <PhoneInput
-                value={phone}
-                inputStyle={{ width: "100%" }}
-                placeholder="+261 32 00 450 25"
-                className="text-black mb-10"
-                country={"mg"}
-                specialLabel="Numéro de télephone"
-                onChange={(phone) => setPhone(phone)}
-              />
-              <Button className="mb-4 h-9 bg-secondary">Suivant</Button>
-            </div>
+            {phoneInput && (
+              <div className="flex flex-col">
+                <label className="mb-2">Numéro de télephone</label>
+                <PhoneInput
+                  value={phone}
+                  inputStyle={{ width: "100%" }}
+                  placeholder="+261 32 00 450 25"
+                  className="text-black mb-10"
+                  country={"mg"}
+                  specialLabel="Numéro de télephone"
+                  onChange={(phone) => setPhone(phone)}
+                />
+                <Button
+                  className="mb-4 h-9 bg-secondary"
+                  onClick={() => {
+                    setPasswordInput(true);
+                    setPhoneInput(false);
+                  }}
+                >
+                  Suivant
+                </Button>
+              </div>
+            )}
+            {passwordInput && (
+              <div className="flex flex-col">
+                <label className="mb-2">Mot de passe</label>
+                <Input
+                  className="mb-10 h-9 rounded"
+                  type="tel"
+                  placeholder="Au moins 8 caractères"
+                  bordercolor="transparent"
+                />
+                <Button
+                  className="mb-4 h-9 bg-secondary"
+                  onClick={() => {
+                    setPasswordInput2(true);
+                    setPasswordInput(false);
+                  }}
+                >
+                  Suivant
+                </Button>
+              </div>
+            )}
+            {passwordInput2 && (
+              <div className="flex flex-col">
+                <label className="mb-2">Confirmation mot de passe</label>
+                <Input
+                  className="mb-10 h-9 rounded"
+                  type="tel"
+                  placeholder="Au moins 8 caractères"
+                  bordercolor="transparent"
+                />
+                <Button className="mb-4 h-9 bg-secondary">Terminer</Button>
+              </div>
+            )}
             <div className="flex lg:flex-row">
               <p>Vous avez un compte ?</p>
               <Link className="mx-1 font-bold text-secondary" to={"/login"}>
