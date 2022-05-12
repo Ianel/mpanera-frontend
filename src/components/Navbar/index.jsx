@@ -10,8 +10,9 @@ import { MdNotifications, MdSearch } from "react-icons/md";
 
 const links = [
   { title: "Accueil", link: "/" },
-  { title: "Mon panier", link: "/cart" },
-  { title: "Mon compte", link: "/account" },
+  { title: "Panier", link: "/cart" },
+  { title: "Favoris", link: "/favorite" },
+  { title: "Compte", link: "/account" },
 ];
 
 const Navbar = (props) => {
