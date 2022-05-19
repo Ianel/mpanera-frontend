@@ -1,15 +1,15 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-export const Button = (props) => {
+const Button = (props) => {
   const setColor = () => {
     switch (props.color) {
       case "primary":
-        return "bg-blue-600";
+        return "bg-primary";
       case "secondary":
-        return "bg-gray-600";
+        return "bg-secondary";
       case "accent":
-        return "bg-green-600";
+        return "bg-accent";
       default:
         return "bg-blue-600";
     }
@@ -45,3 +45,5 @@ Button.defaultProps = {
   className: "",
   wide: false,
 };
+
+export default Button;

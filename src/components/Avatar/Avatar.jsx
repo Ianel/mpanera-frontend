@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { avatar } from "../../assets/images/images";
+import { avatar } from "assets/images/images";
 
 const sizes = {
   sm: "w-8 h-8",
