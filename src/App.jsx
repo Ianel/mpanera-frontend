@@ -1,15 +1,11 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { auth } from "@/services/firebase.service.js";
-import { useAuthState } from "react-firebase-hooks/auth";
-import LoginPage from "@/pages/Login";
-import Mainpage from "@/pages/Home/Main";
-import AboutPage from "@/pages/About";
-import { HomePage } from "@/pages/Home";
-import RegisterPage from "./pages/Register";
+import LoginPage from "pages/Login";
+import HomePage from "pages/Home";
+import RegisterPage from "pages/Register/Register";
 
 export const App = () => {
-  const [user] = useAuthState(auth);
+  const user = true;
 
   return (
     <Router>
@@ -17,10 +13,7 @@ export const App = () => {
         <Route path="/" element={<HomePage />}></Route>
         <Route path="/login" element={<LoginPage />}></Route>
         <Route path="/register" element={<RegisterPage />}></Route>
-        <Route
-          path="/about"
-          element={user ? <Mainpage /> : <LoginPage />}
-        ></Route>
+        <Route path="/about" element={<LoginPage />}></Route>
       </Routes>
     </Router>
   );

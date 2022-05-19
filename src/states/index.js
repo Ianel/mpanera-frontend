@@ -1,6 +1,9 @@
 import { proxy } from "valtio";
 
-export const states = proxy({
+const states = proxy({
   input: {},
   selectedLink: "accueil",
 });
+
+export default state;
+s;
