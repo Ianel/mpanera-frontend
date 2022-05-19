@@ -23,7 +23,7 @@ const Navbar = (props) => {
         <div className="flex flex-row items-center">
           <img className="w-12 h-12" src={logoBlue} alt="logo" />
           <Link to="/">
-            <h1 className="h1 text-blue-500 text-xl">Mpanera</h1>
+            <h1 className="h1 text-accent text-xl">Mpanera</h1>
           </Link>
         </div>
         <ul className="flex mx-8">
@@ -31,7 +31,7 @@ const Navbar = (props) => {
             <li key={link.title} className={`mx-4`}>
               <Link to={link.link}>{link.title}</Link>
               {selectedLink === link.title.toLowerCase() && (
-                <div className="w-8 h-1 bg-blue-500"></div>
+                <div className="w-8 h-1 bg-accent"></div>
               )}
             </li>
           ))}
@@ -48,7 +48,9 @@ const Navbar = (props) => {
         </div>
         <MdNotifications className="ml-8" size={"24"} />
         <Avatar src={mac} className="mx-8 border-none object-cover" size="sm" />
-        <Button className="px-4">Publier</Button>
+        <Button color="accent" className="px-4">
+          Publier
+        </Button>
       </div>
     </nav>
   );
