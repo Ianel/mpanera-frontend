@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { mac } from "../../assets/images/images";
+import { mac } from "@/assets/images/images";
 
 const Image = (props) => {
   return (

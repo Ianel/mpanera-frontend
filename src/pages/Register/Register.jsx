@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { logo } from "assets/images/images";
-import { Button } from "components/Buttons";
+import { logo } from "@/assets/images/images";
+import Button from "@/components/Button";
 import { Link } from "react-router-dom";
-import Input from "components/Input";
+import Input from "@/components/Input";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 

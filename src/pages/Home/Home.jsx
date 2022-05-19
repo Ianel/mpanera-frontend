@@ -1,9 +1,8 @@
 import React, { useEffect } from "react";
-import MainLayout from "layouts/MainLayout";
-import states from "states";
-import { mac } from "assets/images/images";
-import UserService from "services/users.service";
-import Title from "components/Title";
+import MainLayout from "@/layouts/MainLayout";
+import states from "@/states";
+import UserService from "@/services/users.service";
+import Title from "@/components/Title";
 
 const HomePage = () => {
   useEffect(() => {

@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { states } from "states";
+import states from "@/states";
 import { useSnapshot } from "valtio";
 
 const Input = (props) => {
@@ -29,7 +29,7 @@ Input.propTypes = {
   placeholder: PropTypes.string,
   bordercolor: PropTypes.string,
   name: PropTypes.string,
-  onClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func,
 };
 
 export default Input;

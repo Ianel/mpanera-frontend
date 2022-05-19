@@ -1,10 +1,10 @@
-import { BASE_URL } from '@/constants/urls';
-import axios from 'axios';
+import { BASE_URL } from "@/constants/urls";
+import axios from "axios";
 
 class UserService {
-    getAllUsers = () => {
-        axios.get(`${BASE_URL}/users`);
-    };
+  getAllUsers = async () => {
+    await axios.get(`${BASE_URL}/users`);
+  };
 }
 
-module.exports = UserService;
+export default UserService;

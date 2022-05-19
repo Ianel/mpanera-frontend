@@ -1,5 +1,5 @@
 import React from "react";
-import SelectInput from "../../../components/Input/SelectInput/SelectInput";
+import SelectInput from "@/components/Input/SelectInput/SelectInput";
 
 const selectItems = [
   { USA: "United States Of America" },

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
-import MainLayout from "layouts/MainLayout";
-import states from "states";
+import MainLayout from "@/layouts/MainLayout";
+import states from "@/states";
 
 const AboutPage = () => {
   useEffect(() => {

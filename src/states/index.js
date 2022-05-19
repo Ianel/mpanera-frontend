@@ -5,5 +5,4 @@ const states = proxy({
   selectedLink: "accueil",
 });
 
-export default state;
-s;
+export default states;

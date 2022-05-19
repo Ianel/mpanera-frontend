@@ -5,7 +5,7 @@ const Button = (props) => {
   const setColor = () => {
     switch (props.color) {
       case "primary":
-        return "bg-primary";
+        return "bg-blue-500";
       case "secondary":
         return "bg-secondary";
       case "accent":

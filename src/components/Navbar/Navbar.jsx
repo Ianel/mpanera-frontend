@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useSnapshot } from "valtio";
-import { states } from "/states";
-import { Button } from "/components/Buttons";
-import { logoBlue, mac } from "/assets/images/images";
-import Input from "../Input/Input";
-import Avatar from "../Avatar/Avatar";
+import states from "@/states";
+import Button from "@/components/Button";
+import { logoBlue, mac } from "@/assets/images/images";
+import Input from "@/components/Input/Input";
+import Avatar from "@/components/Avatar/Avatar";
 import { MdNotifications, MdSearch } from "react-icons/md";
 
 const links = [

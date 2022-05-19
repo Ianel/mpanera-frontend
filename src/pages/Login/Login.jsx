@@ -1,14 +1,8 @@
 import React, { useState } from "react";
-import { firebaseApp } from "@/services/firebase.service";
-import {
-  getAuth,
-  RecaptchaVerifier,
-  signInWithPhoneNumber,
-} from "firebase/auth";
 import { Link } from "react-router-dom";
 import { logo } from "@/assets/images/images";
 import Input from "@/components/Input";
-import { Button } from "@/components/Buttons";
+import Button from "@/components/Button";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 
