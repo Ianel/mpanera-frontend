@@ -5,7 +5,7 @@ const NavLinksPrimary = ({ links, className, selectedLink }) => {
   return (
     <ul className={className}>
       {links.map((link) => (
-        <li key={link.title} className={`mx-4`}>
+        <li key={link.title} className={`mx-4 flex flex-col items-center`}>
           <Link to={link.link}>{link.title}</Link>
           {selectedLink === link.title.toLowerCase() && (
             <div className="w-8 h-1 bg-accent"></div>
