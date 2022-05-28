@@ -15,7 +15,9 @@ const LoginPage = () => {
         <nav className="flex flex-col md:flex-row md:justify-between">
           <div className="flex lg:flex-row items-center">
             <img className="w-12" src={logo} alt="mpanera logo" />
-            <h1 className="h1 lg:text-xl">Mpanera</h1>
+            <h1 className="h1 lg:text-xl">
+              <Link to="/">Mpanera</Link>
+            </h1>
           </div>
           <div className="md:flex flex-col items-start md:flex-row md:justify-around md:items-center">
             <div className="md:mx-8">

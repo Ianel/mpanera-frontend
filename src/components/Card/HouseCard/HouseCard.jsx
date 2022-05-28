@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Image from "@/components/Image";
 import { login } from "@/assets/images/images";
 import Title from "@/components/Title";
@@ -6,10 +6,18 @@ import { FaHeart, FaHeartbeat } from "react-icons/fa";
 import { MdFavorite, MdFavoriteBorder } from "react-icons/md";
 
 const HouseCard = () => {
+  const [addToFave, setAddToFave] = useState(false);
+
   return (
-    <div className="w-80 relative">
-      <MdFavoriteBorder className="text-white absolute top-4 right-4" />
-      <Image src={login} alt={"A mac computer"} className="rounded-md h-72" />
+    <div className=" lg:w-[15.0925rem] md:w-[13rem] w-72 relative mx-8">
+      <button onClick={() => setAddToFave((addToFave) => !addToFave)}>
+        {!addToFave ? (
+          <MdFavoriteBorder className="text-white absolute top-9 right-4" />
+        ) : (
+          <MdFavorite className="text-red-500 absolute top-9 right-4" />
+        )}
+      </button>
+      <Image src={login} alt={"A mac computer"} className="rounded-md h-48" />
       <Title type="h5" className="font-bold text-primaryDark pt-4">
         Villa Belle Vue
       </Title>
