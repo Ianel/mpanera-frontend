@@ -1,8 +1,12 @@
-import OffersLayout from "@/pages/Offers/Saved";
-import React from "react";
+import React, { useEffect } from "react";
+import states from "@/states";
 
 const Saved = () => {
-  return <OffersLayout></OffersLayout>;
+  useEffect(() => {
+    states.selectedOffersLink = "saved";
+  }, []);
+
+  return <h1>nkdnqd</h1>;
 };
 
 export default Saved;

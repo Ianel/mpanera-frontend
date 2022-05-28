@@ -1,8 +1,11 @@
-import OffersLayout from "@/pages/Offers/List";
-import React from "react";
+import React, { useEffect } from "react";
 
 const List = () => {
-  return <OffersLayout></OffersLayout>;
+  useEffect(() => {
+    states.selectedOffersLink = "list";
+  }, []);
+
+  return <h1>hgvhfyf</h1>;
 };
 
 export default List;

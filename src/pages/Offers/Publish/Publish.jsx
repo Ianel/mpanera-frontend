@@ -1,8 +1,12 @@
-import React from "react";
-import OffersLayout from "@/pages/Offers/Publish";
+import React, { useEffect } from "react";
+import states from "@/states";
 
 const Publish = () => {
-  return <OffersLayout></OffersLayout>;
+  useEffect(() => {
+    states.selectedOffersLink = "publish";
+  }, []);
+
+  return <h1>Pussbjkc</h1>;
 };
 
 export default Publish;
