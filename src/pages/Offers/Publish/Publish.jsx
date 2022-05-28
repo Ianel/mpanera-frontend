@@ -1,12 +1,7 @@
-import React, { useEffect } from "react";
-import states from "@/states";
+import React from "react";
 import OffersLayout from "@/pages/Offers/Publish";
 
 const Publish = () => {
-  useEffect(() => {
-    states.selectedOffersLink = "publier une offre";
-  }, []);
-
   return <OffersLayout></OffersLayout>;
 };
 

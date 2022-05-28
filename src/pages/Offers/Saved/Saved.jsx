@@ -1,12 +1,7 @@
 import OffersLayout from "@/pages/Offers/Saved";
-import states from "@/states";
-import React, { useEffect } from "react";
+import React from "react";
 
 const Saved = () => {
-  useEffect(() => {
-    states.selectedOffersLink = "voir offres sauvegardées";
-  }, []);
-
   return <OffersLayout></OffersLayout>;
 };
 

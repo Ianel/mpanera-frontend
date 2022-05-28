@@ -5,9 +5,9 @@ import NavbarOffers from "@/components/NavbarOffers";
 
 const OffersLayout = ({ children }) => {
   const links = [
-    { title: "Publier une offre", link: "/offers/publish" },
-    { title: "Liste des offres publiées", link: "/offers/list" },
-    { title: "Voir offres sauvegardées", link: "/offers/saved" },
+    { title: "Publier une offre" },
+    { title: "Liste des offres publiées" },
+    { title: "Voir offres sauvegardées" },
   ];
 
   useEffect(() => {
