@@ -4,11 +4,11 @@ import states from "@/states";
 import NavBrand from "./NavBrand";
 import NavLinksPrimary from "./NavLinksPrimary";
 import NavLinksSecondary from "./NavLinksSecondary";
+import NavSearchBar from "./NavSearchBar";
 
 const links = [
   { title: "Accueil", link: "/" },
-  { title: "Favoris", link: "/favorite" },
-  { title: "Compte", link: "/account" },
+  { title: "Offres", link: "/offers" },
   { title: "A propos", link: "/about" },
   { title: "Contact", link: "/contact" },
 ];
@@ -28,6 +28,7 @@ const Navbar = () => {
         className="flex mx-8"
         links={links}
       />
+      <NavSearchBar />
       <NavLinksSecondary
         className="flex flex-row items-center justify-between"
         links={moreLinks}

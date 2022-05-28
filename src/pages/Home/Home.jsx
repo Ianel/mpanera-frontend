@@ -3,6 +3,7 @@ import MainLayout from "@/layouts/MainLayout";
 import states from "@/states";
 import UserService from "@/services/users.service";
 import Title from "@/components/Title";
+import HouseCard from "@/components/Card/HouseCard";
 
 const HomePage = () => {
   useEffect(() => {
@@ -19,12 +20,13 @@ const HomePage = () => {
   return (
     <MainLayout>
       <div className="pb-10">
-        <div className="text-center p-8">
-          <h1>Mpanera</h1>
-          <p>La plateforme N°1 dans la recherche d'immobiliers</p>
-        </div>
-        <div className="px-8 flex lg:flex-row lg:justify-between lg:items-center flex-wrap gap-y-8">
-          <Title type="h2">Hello</Title>
+        <div className="flex justify-evenly items-center flex-wrap">
+          {[
+            1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 8, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0,
+          ].map((house, index) => {
+            return <HouseCard key={index} />;
+          })}
         </div>
       </div>
     </MainLayout>
