@@ -72,7 +72,7 @@ const Publish = () => {
               type="date"
             />
           </div>
-          <div className="flex flex-col md:flex-row w-full justify-evenly items-start">
+          <div className="flex flex-col md:flex-row w-full justify-evenly md:items-start">
             <InputGroup
               size="md:w-1/3"
               label="Description"
