@@ -21,7 +21,7 @@ const moreLinks = [
 const Navbar = () => {
   const { selectedLink } = useSnapshot(states);
   return (
-    <nav className="py-4 flex flex-col lg:flex-row px-8 items-center justify-between">
+    <nav className="py-4 flex flex-col lg:flex-row px-20 items-center justify-between">
       <NavBrand className="flex flex-row items-center" />
       <NavLinksPrimary
         selectedLink={selectedLink}

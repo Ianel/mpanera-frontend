@@ -25,7 +25,7 @@ const HomePage = () => {
             1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 8, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             0,
           ].map((house, index) => {
-            return <HouseCard key={index} />;
+            return <HouseCard key={index} path="/houses/1" />;
           })}
         </div>
       </div>
