@@ -5,7 +5,7 @@ const MainLayout = ({ children }) => {
   return (
     <div>
       <Navbar />
-      <main className="bg-secondaryWhite px-20">{children}</main>
+      <main className="bg-secondaryWhite px-12">{children}</main>
     </div>
   );
 };

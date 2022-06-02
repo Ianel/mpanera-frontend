@@ -56,6 +56,8 @@ const HouseDetailPage = () => {
             </Title>
             <p>8 / 10</p>
           </div>
+        </div>
+        <div className="flex justify-between items-center mt-4">
           <div>
             <Title type="h3" className="font-bold text-primaryDark">
               Loyer du logement:

@@ -2,8 +2,8 @@ import React, { useEffect } from "react";
 import MainLayout from "@/layouts/MainLayout";
 import states from "@/states";
 import UserService from "@/services/users.service";
-import Title from "@/components/Title";
 import HouseCard from "@/components/Card/HouseCard";
+import Scrollbar from "@/components/Scrollbar";
 
 const HomePage = () => {
   useEffect(() => {
@@ -19,6 +19,7 @@ const HomePage = () => {
 
   return (
     <MainLayout>
+      <Scrollbar />
       <div className="pb-10">
         <div className="flex flex-row justify-evenly items-center flex-wrap">
           {[
