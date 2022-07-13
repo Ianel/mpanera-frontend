@@ -147,8 +147,8 @@ const HouseDetail = () => {
         <div>
           <h3 className="text-2xl font-medium mb-6">Proposé par Ianel</h3>
           <div className="flex justify-start items-center gap-x-5">
-            <div className="w-1/2">
-              <img className="w-2/3 mx-auto rounded-lg" src={mac} alt="" />
+            <div className="">
+              <img className="w-48 h-48 rounded-full" src={mac} alt="" />
             </div>
             <p className="w-1/2 text-justify">
               Je me nomme Ianel Tombozafy. Habitant de Mahajanga, Lorem ipsum

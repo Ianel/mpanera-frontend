@@ -7,17 +7,21 @@ const HouseImage = ({ prevButton, nextButton, step, handleChange, values }) => {
 
   const onFileChange = (e) => {
     setImgCollection({ imgCollection: e.target.files });
-    console.log(imgCollection);
   };
 
   const onSubmit = (e) => {
     e.preventDefault();
     var formData = new FormData();
+
     for (const key of Object.keys(imgCollection)) {
       formData.append("imgCollection", imgCollection[key]);
+      console.log(imgCollection[key]);
     }
+
     axios
-      .post("http://localhost:4000/api/v1/images", formData, {})
+      .post("http://localhost:4000/api/v1/images", formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      })
       .then((res) => {
         console.log(res.data);
       });
@@ -32,7 +36,11 @@ const HouseImage = ({ prevButton, nextButton, step, handleChange, values }) => {
           </p>
         </div>
         <div className="w-1/2 flex gap-4 flex-col justify-center items-center">
-          <form onSubmit={onSubmit} className="flex flex-col items-center">
+          <form
+            onSubmit={onSubmit}
+            encType="multipart/form-data"
+            className="flex flex-col items-center"
+          >
             <h3 className="my-4">Images</h3>
 
             <input
