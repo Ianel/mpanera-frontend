@@ -18,10 +18,23 @@ import Navbar from "../Home/Navbar";
 const HouseDetail = () => {
   const { id } = useParams();
   const [house, setHouse] = useState({});
+  const [housePhotos, setHousePhotos] = useState([]);
+
+  const PHOTO_URL = "http://localhost:4000";
 
   useEffect(async () => {
     await HousesServices.getHouse(id)
-      .then((response) => setHouse(response.data.results))
+      .then((response) => {
+        setHouse(response.data.results);
+
+        HousesServices.getHouseImagesById(response.data.results["house_id"])
+          .then((res) => {
+            setHousePhotos(res.data.results);
+            console.log(res.data.results);
+          })
+          .catch((error) => console.error(error))
+          .finally(() => console.log("Done"));
+      })
       .catch((error) => console.error(error))
       .finally(() => console.log("Completed"));
   }, []);
@@ -46,9 +59,17 @@ const HouseDetail = () => {
           </button>
         </div>
         <div className="flex my-4 gap-2">
-          <img className="w-1/2 object-cover rounded-l-lg" src={mac} alt="" />
+          <img
+            className="w-1/2 object-cover rounded-l-lg"
+            src={`${PHOTO_URL}/${housePhotos[0].path}`}
+            alt=""
+          />
           <div className="w-1/2 flex flex-wrap gap-2">
-            <img className="w-[49%] object-cover" src={mac} alt="" />
+            <img
+              className="w-[49%] object-cover"
+              src={`${PHOTO_URL}/${housePhotos[1].path}`}
+              alt=""
+            />
             <img
               className="w-[49%] object-cover rounded-tr-lg"
               src={mac}

@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import OffersLayout from "../../../../layouts/OffersLayout/OffersLayout";
-import axios from "axios";
+import { MainContext } from "../../../../providers/main.provider";
+import HousesServices from "../../../../services/houses.services";
 
 const HouseImage = ({ prevButton, nextButton, step, handleChange, values }) => {
   const [imgCollection, setImgCollection] = useState("");
+
+  const { houseId, setHouseId } = useContext(MainContext);
 
   const onFileChange = (e) => {
     setImgCollection({ imgCollection: e.target.files });
@@ -18,13 +21,9 @@ const HouseImage = ({ prevButton, nextButton, step, handleChange, values }) => {
       console.log(imgCollection[key]);
     }
 
-    axios
-      .post("http://localhost:4000/api/v1/images", formData, {
-        headers: { "Content-Type": "multipart/form-data" },
-      })
-      .then((res) => {
-        console.log(res.data);
-      });
+    HousesServices.uploadImages({ house_path: formData, house_id: houseId })
+      .then((response) => console.log(response.data))
+      .catch((error) => console.error(error));
   };
 
   return (
@@ -37,7 +36,6 @@ const HouseImage = ({ prevButton, nextButton, step, handleChange, values }) => {
         </div>
         <div className="w-1/2 flex gap-4 flex-col justify-center items-center">
           <form
-            onSubmit={onSubmit}
             encType="multipart/form-data"
             className="flex flex-col items-center"
           >
@@ -51,6 +49,7 @@ const HouseImage = ({ prevButton, nextButton, step, handleChange, values }) => {
             />
 
             <button
+              onClick={onSubmit}
               className="rounded-lg bg-blue-500 text-white w-32 py-2 my-4"
               type="submit"
             >

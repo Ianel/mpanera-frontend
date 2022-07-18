@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
 import OffersLayout from "../../../../layouts/OffersLayout/OffersLayout";
+import { MainContext } from "../../../../providers/main.provider";
 import AuthService from "../../../../services/auth.service";
 import HousesServices from "../../../../services/houses.services";
 
@@ -11,6 +12,8 @@ const HouseMoreInfos = ({
   step,
 }) => {
   const userId = AuthService.getUserId();
+
+  const { houseId, setHouseId } = useContext(MainContext);
 
   let dataForHouse = {
     area: values.area,
@@ -33,8 +36,11 @@ const HouseMoreInfos = ({
     <OffersLayout
       step={step}
       nextButton={async (e) => {
-        /*  await HousesServices.createHouse(dataForHouse)
-          .then((response) => console.log(response.data.results))
+        /* await HousesServices.createHouse(dataForHouse)
+          .then((response) => {
+            console.log(response.data.results);
+            setHouseId(response.data.results.house_id);
+          })
           .catch((error) => console.error(error)); */
         nextButton(e);
       }}

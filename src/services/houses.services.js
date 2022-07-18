@@ -17,6 +17,16 @@ class HouseService {
   getHousesByCityName = (city) => {
     return axios.get(`${BASE_URL}/houses?city=${city}`);
   };
+
+  uploadImages = (data) => {
+    return axios.post(`${BASE_URL}/images`, data, {
+      headers: { "Content-Type": "multipart/form-data" },
+    });
+  };
+
+  getHouseImagesById = (id) => {
+    return axios.get(`${BASE_URL}/images/${id}`);
+  };
 }
 
 export default new HouseService();
