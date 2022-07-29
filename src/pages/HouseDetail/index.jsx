@@ -26,17 +26,17 @@ const HouseDetail = () => {
     await HousesServices.getHouse(id)
       .then((response) => {
         setHouse(response.data.results);
-
-        HousesServices.getHouseImagesById(response.data.results["house_id"])
-          .then((res) => {
-            setHousePhotos(res.data.results);
-            console.log(res.data.results);
-          })
-          .catch((error) => console.error(error))
-          .finally(() => console.log("Done"));
       })
       .catch((error) => console.error(error))
       .finally(() => console.log("Completed"));
+
+    await HousesServices.getHouseImagesById(13)
+      .then((res) => {
+        setHousePhotos(res.data.results);
+        console.log(res.data);
+      })
+      .catch((error) => console.error(error))
+      .finally(() => console.log("Done"));
   }, []);
   const [favorite, setFavorite] = useState(false);
 
@@ -61,13 +61,13 @@ const HouseDetail = () => {
         <div className="flex my-4 gap-2">
           <img
             className="w-1/2 object-cover rounded-l-lg"
-            src={`${PHOTO_URL}/${housePhotos[0].path}`}
+            src={`${PHOTO_URL}/${housePhotos[0]["path"]}`}
             alt=""
           />
           <div className="w-1/2 flex flex-wrap gap-2">
             <img
               className="w-[49%] object-cover"
-              src={`${PHOTO_URL}/${housePhotos[1].path}`}
+              src={`${PHOTO_URL}/${housePhotos[1]}`}
               alt=""
             />
             <img
