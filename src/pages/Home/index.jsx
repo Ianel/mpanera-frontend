@@ -36,6 +36,19 @@ const HomePage = () => {
           .map((house, index) => {
             return <Card house={house} key={new Date() * index} />;
           })}
+        // Exemple de consommation d'image
+        <img
+          src={"http://localhost:4000/1658734441910maison-14.png"}
+          alt="backend_image_example"
+        />
+        // Ou sinon par background image
+        <div
+          style={{
+            height: "200px",
+            width: "200px",
+            backgroundImage: `url("http://localhost:4000/1658734441910maison-14.png")`,
+          }}
+        ></div>
       </div>
     </HomeLayout>
   );
