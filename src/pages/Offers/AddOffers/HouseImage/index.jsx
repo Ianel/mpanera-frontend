@@ -1,15 +1,25 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import OffersLayout from "../../../../layouts/OffersLayout/OffersLayout";
 import { MainContext } from "../../../../providers/main.provider";
 import HousesServices from "../../../../services/houses.services";
 
 const HouseImage = ({ prevButton, nextButton, step, handleChange, values }) => {
   const [imgCollection, setImgCollection] = useState("");
+  const [images, setImages] = useState([]);
+  const [imagesURLs, setImagesURLs] = useState([]);
 
   const { houseId, setHouseId } = useContext(MainContext);
 
+  useEffect(() => {
+    if (images.length < 1) return;
+    const newImagesURLs = [];
+    images.forEach((image) => imagesURLs.push(URL.createObjectURL(image)));
+    setImagesURLs(newImagesURLs);
+  }, [images])
+
   const onFileChange = (e) => {
     setImgCollection({ imgCollection: e.target.files });
+    setImages([...e.target.files]);
   };
 
   const onSubmit = (e) => {
@@ -21,7 +31,9 @@ const HouseImage = ({ prevButton, nextButton, step, handleChange, values }) => {
       console.log(imgCollection[key]);
     }
 
-    HousesServices.uploadImages({ house_path: formData, house_id: houseId })
+    formData.append("house_id", houseId);
+
+    HousesServices.uploadImages(formData)
       .then((response) => console.log(response.data))
       .catch((error) => console.error(error));
   };
@@ -31,7 +43,7 @@ const HouseImage = ({ prevButton, nextButton, step, handleChange, values }) => {
       <div className="flex w-full h-full">
         <div className="w-1/2 bg-gradient-to-b from-blue-500 to-emerald-300 flex flex-col justify-center items-center">
           <p className="text-3xl px-8 text-center text-white">
-            Entrez au moins 9 images
+            Entrez au moins 5 images
           </p>
         </div>
         <div className="w-1/2 flex gap-4 flex-col justify-center items-center">
@@ -47,6 +59,10 @@ const HouseImage = ({ prevButton, nextButton, step, handleChange, values }) => {
               onChange={onFileChange}
               multiple
             />
+
+            <input type="text" name="house_id" value={houseId} hidden />
+
+            {imagesURLs.map((imageSrc) => <img src={imageSrc} alt="images" />)}
 
             <button
               onClick={onSubmit}

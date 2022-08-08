@@ -24,21 +24,24 @@ const HouseDetail = () => {
 
   useEffect(async () => {
     await HousesServices.getHouse(id)
-      .then((response) => {
+      .then(async (response) => {
         setHouse(response.data.results);
+        await HousesServices.getHouseImagesById(response.data.results["house_id"])
+          .then((res) => {
+            setHousePhotos(res.data.results);
+            console.log(res.data);
+          })
+      .catch((error) => console.error(error))
+      .finally(() => console.log("Done"));
+
       })
       .catch((error) => console.error(error))
       .finally(() => console.log("Completed"));
 
-    await HousesServices.getHouseImagesById(13)
-      .then((res) => {
-        setHousePhotos(res.data.results);
-        console.log(res.data);
-      })
-      .catch((error) => console.error(error))
-      .finally(() => console.log("Done"));
   }, []);
   const [favorite, setFavorite] = useState(false);
+
+  const paths = housePhotos.map(photo => photo["path"]);
 
   return (
     <HomeLayout>
@@ -61,24 +64,24 @@ const HouseDetail = () => {
         <div className="flex my-4 gap-2">
           <img
             className="w-1/2 object-cover rounded-l-lg"
-            src={`${PHOTO_URL}/${housePhotos[0]["path"]}`}
+            src={`${PHOTO_URL}/${paths[0]}`}
             alt=""
           />
           <div className="w-1/2 flex flex-wrap gap-2">
             <img
               className="w-[49%] object-cover"
-              src={`${PHOTO_URL}/${housePhotos[1]}`}
+              src={`${PHOTO_URL}/${paths[1]}`}
               alt=""
             />
             <img
               className="w-[49%] object-cover rounded-tr-lg"
-              src={mac}
+              src={`${PHOTO_URL}/${paths[2]}`}
               alt=""
             />
-            <img className="w-[49%] object-cover" src={mac} alt="" />
+            <img className="w-[49%] object-cover" src={`${PHOTO_URL}/${paths[3]}`} alt="" />
             <img
               className="w-[49%] object-cover rounded-br-lg"
-              src={mac}
+              src={`${PHOTO_URL}/${paths[4]}`}
               alt=""
             />
           </div>
@@ -93,8 +96,8 @@ const HouseDetail = () => {
         </div>
         <hr className="my-8" />
         <div className="flex gap-6 justify-between">
-          <div className="w-1/2 flex flex-col justify-between">
-            <div>
+          <div className="flex flex-col justify-between">
+            <div className="mb-5">
               <h3 className="text-xl font-semibold">Description</h3>
               <p className="text-justify">{house.description}</p>
             </div>
@@ -115,7 +118,7 @@ const HouseDetail = () => {
               </div>
             </div>
           </div>
-          <div className=" w-1/2 flex flex-row flex-wrap justify-center">
+          {/* <div className=" w-1/2 flex flex-row flex-wrap justify-center">
             <img
               className="object-cover w-1/2 rounded-tl-lg"
               src={mac}
@@ -136,7 +139,7 @@ const HouseDetail = () => {
               src={mac}
               alt=""
             />
-          </div>
+          </div> */}
         </div>
         <hr className="my-8" />
         <div className="w-1/2">

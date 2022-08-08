@@ -36,12 +36,12 @@ const HouseMoreInfos = ({
     <OffersLayout
       step={step}
       nextButton={async (e) => {
-        /* await HousesServices.createHouse(dataForHouse)
+        await HousesServices.createHouse(dataForHouse)
           .then((response) => {
             console.log(response.data.results);
             setHouseId(response.data.results.house_id);
           })
-          .catch((error) => console.error(error)); */
+          .catch((error) => console.error(error));
         nextButton(e);
       }}
       prevButton={prevButton}
