@@ -26,27 +26,27 @@ const HouseDetail = () => {
     await HousesServices.getHouse(id)
       .then(async (response) => {
         setHouse(response.data.results);
-        await HousesServices.getHouseImagesById(response.data.results["house_id"])
+        await HousesServices.getHouseImagesById(
+          response.data.results["house_id"]
+        )
           .then((res) => {
             setHousePhotos(res.data.results);
             console.log(res.data);
           })
-      .catch((error) => console.error(error))
-      .finally(() => console.log("Done"));
-
+          .catch((error) => console.error(error))
+          .finally(() => console.log("Done"));
       })
       .catch((error) => console.error(error))
       .finally(() => console.log("Completed"));
-
   }, []);
   const [favorite, setFavorite] = useState(false);
 
-  const paths = housePhotos.map(photo => photo["path"]);
+  const paths = housePhotos.map((photo) => photo["path"]);
 
   return (
     <HomeLayout>
-      <Navbar className="w-2/3 mx-auto py-4" />
-      <div className="mx-auto py-4 w-2/3">
+      <Navbar className="w-2/3 mx-auto py-4 relative z-20" />
+      <div className="mx-auto py-4 w-2/3 relative z-10">
         <h1 className="font-semibold text-2xl leading-10">{house.label}</h1>
         <div className="flex justify-between items-center gap-x-4">
           <h2 className="underline">
@@ -54,7 +54,7 @@ const HouseDetail = () => {
             {house.country}
           </h2>
           <button
-            className="flex items-center cursor-pointer"
+            className="flex items-center cursor-pointer "
             onClick={() => setFavorite((favorite) => !favorite)}
           >
             {favorite ? <FaBookmark /> : <FaRegBookmark />}{" "}
@@ -78,7 +78,11 @@ const HouseDetail = () => {
               src={`${PHOTO_URL}/${paths[2]}`}
               alt=""
             />
-            <img className="w-[49%] object-cover" src={`${PHOTO_URL}/${paths[3]}`} alt="" />
+            <img
+              className="w-[49%] object-cover"
+              src={`${PHOTO_URL}/${paths[3]}`}
+              alt=""
+            />
             <img
               className="w-[49%] object-cover rounded-br-lg"
               src={`${PHOTO_URL}/${paths[4]}`}
@@ -96,7 +100,7 @@ const HouseDetail = () => {
         </div>
         <hr className="my-8" />
         <div className="flex gap-6 justify-between">
-          <div className="flex flex-col justify-between">
+          <div className="flex flex-row justify-between items-start w-full">
             <div className="mb-5">
               <h3 className="text-xl font-semibold">Description</h3>
               <p className="text-justify">{house.description}</p>

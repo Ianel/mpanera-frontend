@@ -1,24 +1,31 @@
 import React, { useContext, useEffect, useState } from "react";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
+import Loader from "../../../../components/Loader";
 import OffersLayout from "../../../../layouts/OffersLayout/OffersLayout";
 import { MainContext } from "../../../../providers/main.provider";
 import HousesServices from "../../../../services/houses.services";
+import states from "../../../../states";
+import { actions } from "../../../../utils/actions";
 
 const HouseImage = ({ prevButton, nextButton, step, handleChange, values }) => {
   const [imgCollection, setImgCollection] = useState("");
   const [images, setImages] = useState([]);
   const [imagesURLs, setImagesURLs] = useState([]);
 
+  let navigate = useNavigate();
+
   const { houseId, setHouseId } = useContext(MainContext);
 
   useEffect(() => {
     if (images.length < 1) return;
     const newImagesURLs = [];
-    images.forEach((image) => imagesURLs.push(URL.createObjectURL(image)));
+    images.forEach((image) => newImagesURLs.push(URL.createObjectURL(image)));
     setImagesURLs(newImagesURLs);
-  }, [images])
+  }, [images]);
 
   const onFileChange = (e) => {
-    setImgCollection({ imgCollection: e.target.files });
+    setImgCollection(e.target.files);
     setImages([...e.target.files]);
   };
 
@@ -28,18 +35,29 @@ const HouseImage = ({ prevButton, nextButton, step, handleChange, values }) => {
 
     for (const key of Object.keys(imgCollection)) {
       formData.append("imgCollection", imgCollection[key]);
-      console.log(imgCollection[key]);
+      //console.log(imgCollection[key]);
     }
 
     formData.append("house_id", houseId);
 
+    //actions.toggleLoader();
     HousesServices.uploadImages(formData)
-      .then((response) => console.log(response.data))
+      .then((response) => {
+        console.log(response.data);
+        toast.success("Photos ajoutées");
+        //actions.toggleLoader();
+      })
       .catch((error) => console.error(error));
   };
 
   return (
-    <OffersLayout step={step} prevButton={prevButton} nextButton={nextButton}>
+    <OffersLayout
+      step={step}
+      prevButton={prevButton}
+      nextButton={() => {
+        navigate("/");
+      }}
+    >
       <div className="flex w-full h-full">
         <div className="w-1/2 bg-gradient-to-b from-blue-500 to-emerald-300 flex flex-col justify-center items-center">
           <p className="text-3xl px-8 text-center text-white">
@@ -60,9 +78,18 @@ const HouseImage = ({ prevButton, nextButton, step, handleChange, values }) => {
               multiple
             />
 
-            <input type="text" name="house_id" value={houseId} hidden />
+            <input type="hidden" name="house_id" defaultValue={houseId} />
 
-            {imagesURLs.map((imageSrc) => <img src={imageSrc} alt="images" />)}
+            <div className="flex flex-row flex-wrap gap-3 mt-5">
+              {imagesURLs.map((imageSrc, index) => (
+                <img
+                  className="w-24 h-24"
+                  src={imageSrc}
+                  key={new Date() * index}
+                  alt="images"
+                />
+              ))}
+            </div>
 
             <button
               onClick={onSubmit}

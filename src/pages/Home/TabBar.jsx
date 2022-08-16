@@ -59,9 +59,9 @@ const TabBar = ({ className }) => {
           Bungalows
         </button>
       </div>
-      <button className="flex items-center gap-2 shadow-lg px-4 py-2 rounded-lg ring-1 ring-slate-200">
+      {/* <button className="flex items-center gap-2 shadow-lg px-4 py-2 rounded-lg ring-1 ring-slate-200">
         <FaSlidersH /> Filtres
-      </button>
+      </button> */}
     </div>
   );
 };

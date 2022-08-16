@@ -1,17 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
+import { useEffect } from "react";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { login } from "../../assets/images/images";
+import housesServices from "../../services/houses.services";
 
 const Card = ({ house }) => {
+  const [image, setImage] = useState(null);
   console.log(house);
+
+  useEffect(() => {
+    housesServices
+      .getHouseImagesById(house.house_id)
+      .then((images) => {
+        const imagesPath = images.data.results.map((image) => image["path"]);
+        setImage(imagesPath[0]);
+      })
+      .catch((err) => console.error(err));
+  }, [house]);
 
   return (
     <Link to={`/houses/${house.house_id}`} className="cursor-pointer">
       <div>
         <img
           className="w-56 h-48 object-cover rounded-md"
-          src={login}
+          src={`http://localhost:4000/${image}`}
           alt="Image of house"
         />
         <div className="py-2">

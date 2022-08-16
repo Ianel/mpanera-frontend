@@ -1,4 +1,5 @@
 import React from "react";
+import { Toaster } from "react-hot-toast";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import * as ROUTES from "./constants/routes";
 import HomePage from "./pages/Home";
@@ -13,6 +14,7 @@ const App = () => {
   return (
     <>
       <Router>
+        <Toaster />
         <Routes>
           <Route path={ROUTES.HOME} element={<HomePage />}></Route>
           <Route path={ROUTES.HOUSE_DETAIL} element={<HouseDetail />}></Route>

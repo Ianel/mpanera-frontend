@@ -7,6 +7,7 @@ import states from "../../states";
 import { MainContext } from "../../providers/main.provider";
 import { useNavigate } from "react-router-dom";
 import AuthService from "../../services/auth.service";
+import { useState } from "react";
 
 const Navbar = ({ className }) => {
   let { input, houseResults } = states;
@@ -14,7 +15,7 @@ const Navbar = ({ className }) => {
   let navigate = useNavigate();
 
   return (
-    <div className={`${className} flex justify-between items-center`}>
+    <div className={`${className} flex justify-between items-center relative`}>
       <Link to="/" className="flex items-center">
         <img src={logoBlue} className="w-10 h-10" alt="Logo of Mpanera" />
         <h1 className="text-blue-500 font-bold">Mpanera</h1>
@@ -44,7 +45,7 @@ const Navbar = ({ className }) => {
           <FaSearch />
         </button>
       </div>
-      <div className="flex items-center">
+      <div className="flex flex-row items-center">
         <button
           onClick={async () => {
             await navigate("/offers");
@@ -57,7 +58,7 @@ const Navbar = ({ className }) => {
         <div className="flex gap-x-3 text-blue-500 font-semibold">
           {AuthService.getUserToken() ? (
             <button
-              className="text-blue-500 font-semibold"
+              className="text-gray-500 text-sm font-semibold"
               onClick={async () => {
                 await AuthService.logout();
                 window.location.reload();
@@ -66,11 +67,24 @@ const Navbar = ({ className }) => {
               Déconnexion
             </button>
           ) : (
-            <Link to="/login">Connexion</Link>
+            <Link to="/login" className="text-sm">
+              Connexion
+            </Link>
           )}
-          <Link to="/register">Inscription</Link>
+          <Link to="/register" className="text-sm">
+            Inscription
+          </Link>
+          <Link to="/account" className="text-sm">
+            Compte
+          </Link>
+          <Link to="/profile" className="text-sm">
+            Profil
+          </Link>
         </div>
-        {/*  <button className="p-2 ring-1 ring-slate-200 rounded-lg bg-white shadow-lg">
+        {/* <button
+          onClick={() => setToggleModal((toggleModal) => !toggleModal)}
+          className="p-2 ml-2 ring-1 ring-slate-200 rounded-lg bg-white shadow-lg"
+        >
           <FaBars />
         </button> */}
       </div>

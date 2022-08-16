@@ -5,6 +5,7 @@ const states = proxy({
   input: {},
   selectedLink: "accueil",
   selectedOffersLink: "publier une offre",
+  loading: false,
 });
 
 export default states;
