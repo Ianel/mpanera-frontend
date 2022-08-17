@@ -24,7 +24,7 @@ const RegisterPage = () => {
             <input
               className="w-full focus:outline-none focus:ring-2 focus:ring-blue-500 ring-1 ring-blue-500 outline-none rounded-md"
               type="tel"
-              placeholder="261 32 80 546 89"
+              placeholder="261328054689"
               onChange={(e) => setPhoneNumber(e.target.value)}
             />
           </label>
@@ -52,7 +52,7 @@ const RegisterPage = () => {
                 tel: phone_number,
                 password: password,
               });
-              navigate("/");
+              navigate("/profile");
             }}
           >
             Inscription

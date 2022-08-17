@@ -1,4 +1,4 @@
-import { BASE_URL } from "@/constants/urls";
+import { BASE_URL } from "../constants/urls";
 import axios from "axios";
 
 class UserService {
@@ -8,6 +8,10 @@ class UserService {
 
   getUser = (id) => {
     return axios.get(`${BASE_URL}/users/${id}`);
+  };
+
+  updateUser = (id, data) => {
+    return axios.patch(`${BASE_URL}/users/${id}`, data);
   };
 }
 

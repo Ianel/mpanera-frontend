@@ -7,6 +7,7 @@ import HouseDetail from "./pages/HouseDetail";
 import LoginPage from "./pages/Login";
 import OffersPage from "./pages/Offers";
 import AddOffers from "./pages/Offers/AddOffers";
+import ProfilePage from "./pages/Profile";
 import RegisterPage from "./pages/Register";
 import AuthService from "./services/auth.service";
 
@@ -27,6 +28,7 @@ const App = () => {
             }
           ></Route>
           <Route path={ROUTES.ADD_OFFERS} element={<AddOffers />}></Route>
+          <Route path={ROUTES.PROFILE} element={<ProfilePage />}></Route>
         </Routes>
       </Router>
     </>

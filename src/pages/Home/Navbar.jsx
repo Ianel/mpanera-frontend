@@ -77,9 +77,15 @@ const Navbar = ({ className }) => {
           <Link to="/account" className="text-sm">
             Compte
           </Link>
-          <Link to="/profile" className="text-sm">
+          <button
+            onClick={async () => {
+              await navigate("/profile");
+              await window.location.reload();
+            }}
+            className="text-sm text-blue-500 font-bold"
+          >
             Profil
-          </Link>
+          </button>
         </div>
         {/* <button
           onClick={() => setToggleModal((toggleModal) => !toggleModal)}
