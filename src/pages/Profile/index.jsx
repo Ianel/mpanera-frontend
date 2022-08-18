@@ -34,12 +34,17 @@ const ProfilePage = () => {
   return (
     <HomeLayout>
       <Navbar className="py-4" />
+
       {authService.getUserToken() ? (
         <>
           <div className="w-2/3 mx-auto flex flex-row py-4">
             <img
               className="w-56 h-56 rounded-md"
-              src={avatar}
+              src={
+                singleUser.profile_avatar
+                  ? `http://localhost:4000/${singleUser.profile_avatar}`
+                  : avatar
+              }
               alt="profile image"
             />
             <div className="flex flex-col justify-between px-6 w-full">
@@ -59,8 +64,10 @@ const ProfilePage = () => {
                 <h2 className="py-2">
                   {singleUser.gender ? singleUser.gender : "Genre"} -{" "}
                   {singleUser.birthdate
-                    ? new Date(Date.now()).getFullYear() -
-                      new Date(singleUser.birthdate).getFullYear()
+                    ? `${
+                        new Date(Date.now()).getFullYear() -
+                        new Date(singleUser.birthdate).getFullYear()
+                      } ans`
                     : "Année"}
                 </h2>
               </div>
@@ -68,7 +75,7 @@ const ProfilePage = () => {
                 <p className="flex flex-row items-center gap-3">
                   <FaMapMarkerAlt />
                   {singleUser.adress ? singleUser.adress : "Adresse"}{" "}
-                  {singleUser.city ? singleUser.city : "Ville"},{" "}
+                  {singleUser.city ? singleUser.city : "Ville"}{" "}
                   {singleUser.postal_code
                     ? singleUser.postal_code
                     : "code postal"}
@@ -125,6 +132,7 @@ const ProfilePage = () => {
 const ProfileForm = () => {
   const [gender, setGender] = useState("");
   const [userId, setUserId] = useState(0);
+  const [profileAvatarImage, setProfileAvatarImage] = useState("");
 
   const snapshot = useSnapshot(states);
 
@@ -139,9 +147,7 @@ const ProfileForm = () => {
 
         states.input.profileFirstname = user.data.results.firstname;
         states.input.profileLastname = user.data.results.lastname;
-        states.input.profileBirthdate = new Date(
-          user.data.results.birthdate
-        ).toLocaleDateString("en-gb");
+        states.input.profileBirthdate = user.data.results.birthdate;
         states.input.profileCity = user.data.results.city;
         states.input.profilePostalCode = user.data.results.postal_code;
         states.input.profileRegion = user.data.results.region;
@@ -150,8 +156,10 @@ const ProfileForm = () => {
         states.input.profilePhoneNumber = user.data.results.phone_number;
         states.input.profileEmail = user.data.results.email;
         states.input.profileFacebookName = user.data.results.facebook_name;
-        states.input.profileAvatar = user.data.results.profile_avatar;
+        setProfileAvatarImage(user.data.results.profile_avatar);
         states.input.profileAbout = user.data.results.about;
+
+        console.log(user.data.results.about);
       })
       .catch((error) => console.error(error));
   }, []);
@@ -161,9 +169,6 @@ const ProfileForm = () => {
       <h2 className="text-lg font-bold text-center mb-4">
         Veuillez remplir les champs suivants
       </h2>
-      {console.log(
-        new Date(snapshot.input.profileBirthdate).toLocaleDateString("da_DK")
-      )}
 
       <form>
         <div className="grid grid-cols-2 gap-3">
@@ -208,7 +213,7 @@ const ProfileForm = () => {
             <Input
               id="birthdate"
               value={moment(snapshot.input.profileBirthdate).format(
-                "yyyy-MM-dd"
+                "yyyy-MM-DD"
               )}
               name="profileBirthdate"
               type="date"
@@ -296,12 +301,28 @@ const ProfileForm = () => {
           </label>
           <label htmlFor="profileAvatar" className="flex flex-col">
             Photo de profil
-            <Input
-              value={snapshot.input.profileAvatar}
+            {/* <Input
+              //value={snapshot.input.profileAvatar}
               id="profileAvatar"
               name="profileAvatar"
               type="file"
               className="border-none"
+            /> */}
+            <input
+              type="file"
+              name="profileAvatar"
+              id="profileAvatar"
+              className="border-none"
+              onChange={(e) => setProfileAvatarImage(e.target.files[0])}
+            />
+            <img
+              className="w-24 h-24 mt-3 rounded-md"
+              src={
+                profileAvatarImage
+                  ? `http://localhost:4000/${profileAvatarImage}`
+                  : avatar
+              }
+              alt="profile image"
             />
           </label>
           <label htmlFor="profileAbout" className="flex flex-col">
@@ -310,11 +331,12 @@ const ProfileForm = () => {
               id="profileAbout"
               name="profileAbout"
               placeholder="A propos"
+              value={snapshot.input.profileAbout}
             ></TextArea>
           </label>
         </div>
         <button
-          onClick={() => {
+          onClick={(e) => {
             const userData = {
               user_id: userId,
               firstname: snapshot.input.profileFirstname,
@@ -329,7 +351,7 @@ const ProfileForm = () => {
               phone_number: snapshot.input.profilePhoneNumber,
               email: snapshot.input.profileEmail,
               facebook_name: snapshot.input.profileFacebookName,
-              profile_avatar: snapshot.input.profileAvatar,
+              profile_avatar: profileAvatarImage,
               about: snapshot.input.profileAbout,
             };
 
@@ -340,6 +362,21 @@ const ProfileForm = () => {
                 window.location.reload();
               })
               .catch((error) => toast.error(error.message));
+
+            let formData = new FormData();
+
+            formData.append("profileAvatar", profileAvatarImage);
+
+            formData.append("user_id", userId);
+
+            usersService
+              .uploadUserImage(formData)
+              .then((response) => {
+                console.log(response.data);
+                //toast.success("Photo ajoutée");
+                //actions.toggleLoader();
+              })
+              .catch((error) => console.error(error));
           }}
           className="bg-blue-500 w-full text-white px-3 py-2 my-6 rounded-md"
         >
