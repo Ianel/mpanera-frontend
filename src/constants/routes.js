@@ -6,3 +6,4 @@ export const OFFERS = "/offers";
 export const ADD_OFFERS = "/offers/add";
 export const PROFILE = "/profile";
 export const ACCOUNT = "/account";
+export const UPDATE_OFFER = "/offers/update/:id";

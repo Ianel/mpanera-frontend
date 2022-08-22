@@ -8,6 +8,7 @@ import HouseDetail from "./pages/HouseDetail";
 import LoginPage from "./pages/Login";
 import OffersPage from "./pages/Offers";
 import AddOffers from "./pages/Offers/AddOffers";
+import UpdateOffers from "./pages/Offers/UpdateOffers";
 import ProfilePage from "./pages/Profile";
 import RegisterPage from "./pages/Register";
 import AuthService from "./services/auth.service";
@@ -31,6 +32,7 @@ const App = () => {
           <Route path={ROUTES.ADD_OFFERS} element={<AddOffers />}></Route>
           <Route path={ROUTES.PROFILE} element={<ProfilePage />}></Route>
           <Route path={ROUTES.ACCOUNT} element={<AccountPage />}></Route>
+          <Route path={ROUTES.UPDATE_OFFER} element={<UpdateOffers />}></Route>
         </Routes>
       </Router>
     </>
