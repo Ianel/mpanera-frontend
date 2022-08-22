@@ -38,7 +38,7 @@ const TabBar = ({ className }) => {
         >
           Villas
         </button>
-        <button
+        {/*  <button
           onClick={() => setHouseType("pavillons")}
           className={`${
             houseType === "pavillons"
@@ -57,7 +57,7 @@ const TabBar = ({ className }) => {
           } w-40 py-2 rounded-md border-r-2  font-semibold border-slate-200`}
         >
           Bungalows
-        </button>
+        </button> */}
       </div>
       {/* <button className="flex items-center gap-2 shadow-lg px-4 py-2 rounded-lg ring-1 ring-slate-200">
         <FaSlidersH /> Filtres

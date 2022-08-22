@@ -51,6 +51,13 @@ const RegisterPage = () => {
               await AuthService.register({
                 tel: phone_number,
                 password: password,
+              }).then(async (res) => {
+                if (res.data.status === "success") {
+                  await AuthService.saveUser(
+                    res.data.results.token,
+                    res.data.results.user.user_id
+                  );
+                }
               });
               navigate("/profile");
             }}
