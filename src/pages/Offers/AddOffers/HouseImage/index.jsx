@@ -1,12 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
-import Loader from "../../../../components/Loader";
 import OffersLayout from "../../../../layouts/OffersLayout/OffersLayout";
 import { MainContext } from "../../../../providers/main.provider";
 import HousesServices from "../../../../services/houses.services";
-import states from "../../../../states";
-import { actions } from "../../../../utils/actions";
 
 const HouseImage = ({ prevButton, nextButton, step, handleChange, values }) => {
   const [imgCollection, setImgCollection] = useState("");

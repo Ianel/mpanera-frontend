@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { login } from "../../assets/images/images";
 import housesServices from "../../services/houses.services";
 
 const Card = ({ house }) => {

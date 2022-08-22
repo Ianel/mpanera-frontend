@@ -6,7 +6,6 @@ import {
   FaEnvelope,
   FaFacebook,
   FaMapMarkerAlt,
-  FaPhone,
   FaPhoneAlt,
 } from "react-icons/fa";
 import authService from "../../services/auth.service";
@@ -30,7 +29,7 @@ const ProfilePage = () => {
   return (
     <HomeLayout>
       <Navbar className="py-4" />
-
+      <h1 className="text-xl font-bold mb-5">Profil</h1>
       {authService.getUserToken() ? (
         singleUser.gender == null ? (
           <ProfileForm />
@@ -121,7 +120,7 @@ const ProfilePage = () => {
         )
       ) : (
         <p className="h-[75vh] flex flex-row justify-center items-center text-2xl">
-          Veuillez vous connecter
+          Veuillez vous connecter, s'il vous plaît
         </p>
       )}
       {show && <ProfileForm />}

@@ -37,8 +37,6 @@ const ProfileForm = () => {
         states.input.profileFacebookName = user.data.results.facebook_name;
         setProfileAvatarImage(user.data.results.profile_avatar);
         states.input.profileAbout = user.data.results.about;
-
-        console.log(user.data.results.about);
       })
       .catch((error) => console.error(error));
   }, []);

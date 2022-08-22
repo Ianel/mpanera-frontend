@@ -56,6 +56,21 @@ const Navbar = ({ className }) => {
           Publier une offre
         </button>
         <div className="flex gap-x-3 text-blue-500 font-semibold">
+          <Link to="/account" className="text-sm">
+            Compte
+          </Link>
+          <button
+            onClick={async () => {
+              await navigate("/profile");
+              await window.location.reload();
+            }}
+            className="text-sm text-blue-500 font-bold"
+          >
+            Profil
+          </button>
+          <Link to="/register" className="text-sm">
+            Inscription
+          </Link>
           {AuthService.getUserToken() ? (
             <button
               className="text-gray-500 text-sm font-semibold"
@@ -71,21 +86,6 @@ const Navbar = ({ className }) => {
               Connexion
             </Link>
           )}
-          <Link to="/register" className="text-sm">
-            Inscription
-          </Link>
-          <Link to="/account" className="text-sm">
-            Compte
-          </Link>
-          <button
-            onClick={async () => {
-              await navigate("/profile");
-              await window.location.reload();
-            }}
-            className="text-sm text-blue-500 font-bold"
-          >
-            Profil
-          </button>
         </div>
         {/* <button
           onClick={() => setToggleModal((toggleModal) => !toggleModal)}

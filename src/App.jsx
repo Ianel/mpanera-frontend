@@ -2,6 +2,7 @@ import React from "react";
 import { Toaster } from "react-hot-toast";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import * as ROUTES from "./constants/routes";
+import AccountPage from "./pages/Account";
 import HomePage from "./pages/Home";
 import HouseDetail from "./pages/HouseDetail";
 import LoginPage from "./pages/Login";
@@ -29,6 +30,7 @@ const App = () => {
           ></Route>
           <Route path={ROUTES.ADD_OFFERS} element={<AddOffers />}></Route>
           <Route path={ROUTES.PROFILE} element={<ProfilePage />}></Route>
+          <Route path={ROUTES.ACCOUNT} element={<AccountPage />}></Route>
         </Routes>
       </Router>
     </>

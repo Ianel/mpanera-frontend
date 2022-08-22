@@ -18,6 +18,10 @@ class HouseService {
     return axios.get(`${BASE_URL}/houses?city=${city}`);
   };
 
+  deleteHousebyId = (id) => {
+    return axios.delete(`${BASE_URL}/houses/${id}`);
+  };
+
   uploadImages = (data) => {
     return axios.post(`${BASE_URL}/images`, data, {
       headers: { "Content-Type": "multipart/form-data" },

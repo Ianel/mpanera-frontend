@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import { useContext } from "react";
 import { FaEye } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import { logoBlue } from "../../assets/images/images";
+import { MainContext } from "../../providers/main.provider";
 import AuthService from "../../services/auth.service";
 
 const LoginPage = () => {
@@ -9,6 +11,7 @@ const LoginPage = () => {
   const [password, setPassword] = useState("");
   const [inputPassword, setInputPassword] = useState(true);
   let navigate = useNavigate();
+  const { setHouseId } = useContext(MainContext);
 
   return (
     <div className="flex justify-center items-center w-screen h-screen">
