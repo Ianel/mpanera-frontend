@@ -18,6 +18,10 @@ class HouseService {
     return axios.get(`${BASE_URL}/houses?city=${city}`);
   };
 
+  updateHouse = (id, data) => {
+    return axios.patch(`${BASE_URL}/houses/${id}`, data);
+  };
+
   deleteHousebyId = (id) => {
     return axios.delete(`${BASE_URL}/houses/${id}`);
   };
