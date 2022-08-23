@@ -14,11 +14,13 @@ import {
 } from "react-icons/fa";
 import { mac } from "../../assets/images/images";
 import Navbar from "../Home/Navbar";
+import usersService from "../../services/users.service";
 
 const HouseDetail = () => {
   const { id } = useParams();
   const [house, setHouse] = useState({});
   const [housePhotos, setHousePhotos] = useState([]);
+  const [author, setAuthor] = useState("");
 
   const PHOTO_URL = "http://localhost:4000";
 
@@ -26,6 +28,13 @@ const HouseDetail = () => {
     await HousesServices.getHouse(id)
       .then(async (response) => {
         setHouse(response.data.results);
+
+        await usersService
+          .getUser(response.data.results.user_id)
+          .then((user) => setAuthor(user.data.results))
+          .catch((error) => console.error(error))
+          .finally(() => console.log("Get author done"));
+
         await HousesServices.getHouseImagesById(
           response.data.results["house_id"]
         )
@@ -39,6 +48,7 @@ const HouseDetail = () => {
       .catch((error) => console.error(error))
       .finally(() => console.log("Completed"));
   }, []);
+
   const [favorite, setFavorite] = useState(false);
 
   const paths = housePhotos.map((photo) => photo["path"]);
@@ -53,15 +63,16 @@ const HouseDetail = () => {
             {house.adress}, {house.city} {house.postal_code}, {house.region},
             {house.country}
           </h2>
-          <button
+          {/* <button
             className="flex items-center cursor-pointer "
             onClick={() => setFavorite((favorite) => !favorite)}
           >
             {favorite ? <FaBookmark /> : <FaRegBookmark />}{" "}
             <span className="mx-2">Enregistrer</span>
-          </button>
+          </button> */}
         </div>
         <div className="flex my-4 gap-2">
+          {console.log(paths.reverse())}
           <img
             className="w-1/2 object-cover rounded-l-lg"
             src={`${PHOTO_URL}/${paths[0]}`}
@@ -92,15 +103,15 @@ const HouseDetail = () => {
         </div>
         <div className="mt-8">
           <h3 className="text-2xl font-medium">
-            Chez Ianel: {house.rooms_number} pièces
+            Chez {author.firstname}: {house.rooms_number} pièces
           </h3>
-          <p className="text-zinc-700 ">
+          {/*  <p className="text-zinc-700 ">
             1 chambre à coucher - 1 salon - 1 cuisine - 1 DC / WC
-          </p>
+          </p> */}
         </div>
         <hr className="my-8" />
         <div className="flex gap-6 justify-between">
-          <div className="flex flex-row justify-between items-start w-full">
+          <div className="flex flex-col justify-between items-start w-full">
             <div className="mb-5">
               <h3 className="text-xl font-semibold">Description</h3>
               <p className="text-justify">{house.description}</p>
@@ -173,18 +184,18 @@ const HouseDetail = () => {
         </div>
         <hr className="my-8" />
         <div>
-          <h3 className="text-2xl font-medium mb-6">Proposé par Ianel</h3>
+          <h3 className="text-2xl font-medium mb-6">
+            Proposé par {author.firstname} {author.lastname}
+          </h3>
           <div className="flex justify-start items-center gap-x-5">
             <div className="">
-              <img className="w-48 h-48 rounded-full" src={mac} alt="" />
+              <img
+                className="w-24 h-24 rounded-full object-cover"
+                src={`http://localhost:4000/${author.profile_avatar}`}
+                alt=""
+              />
             </div>
-            <p className="w-1/2 text-justify">
-              Je me nomme Ianel Tombozafy. Habitant de Mahajanga, Lorem ipsum
-              dolor sit amet, consectetur adipisicing elit. Aliquam tempora
-              corporis nostrum modi error quas quos dolorem alias, unde
-              pariatur, asperiores sed dolore laborum officiis beatae, quibusdam
-              ipsa. Provident, sed.
-            </p>
+            <p className="w-1/2 text-justify">{author.about}</p>
           </div>
         </div>
       </div>

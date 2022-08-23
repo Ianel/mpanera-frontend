@@ -25,7 +25,7 @@ const HouseMoreInfos = ({
     adress: values.adress,
     rent_price: values.rentPrice,
     description: values.description,
-    state: values.stateOf || "En bon état",
+    state: values.stateOf || "En excellent état",
     end_date: values.paymentDate,
     house_type: values.category,
     rooms_number: values.rooms_number,

@@ -12,7 +12,9 @@ const Card = ({ house }) => {
     housesServices
       .getHouseImagesById(house.house_id)
       .then((images) => {
-        const imagesPath = images.data.results.map((image) => image["path"]);
+        const imagesPath = images.data.results
+          .reverse()
+          .map((image) => image["path"]);
         setImage(imagesPath[0]);
       })
       .catch((err) => console.error(err));

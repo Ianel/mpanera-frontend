@@ -25,7 +25,7 @@ const AccountPage = () => {
       <h1 className="text-xl font-bold mb-5">Compte</h1>
       <div className="mx-8">
         {!authService.getUserToken() ? (
-          <h2 className="text-center mt-80 text-2xl">
+          <h2 className="text-center mt-80 text-xl">
             Veuillez vous connecter, s'il vous plaît
           </h2>
         ) : (

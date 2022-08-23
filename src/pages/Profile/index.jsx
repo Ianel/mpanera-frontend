@@ -37,7 +37,7 @@ const ProfilePage = () => {
           <>
             <div className="w-2/3 mx-auto flex flex-row py-4">
               <img
-                className="w-56 h-56 rounded-md"
+                className="w-56 h-56 rounded-md object-cover"
                 src={
                   singleUser.profile_avatar
                     ? `http://localhost:4000/${singleUser.profile_avatar}`
@@ -119,7 +119,7 @@ const ProfilePage = () => {
           </>
         )
       ) : (
-        <p className="h-[75vh] flex flex-row justify-center items-center text-2xl">
+        <p className="h-[75vh] flex flex-row justify-center items-center text-xl">
           Veuillez vous connecter, s'il vous plaît
         </p>
       )}

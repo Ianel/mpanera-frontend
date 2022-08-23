@@ -205,6 +205,7 @@ const ProfileForm = () => {
           <label htmlFor="profileAbout" className="flex flex-col">
             A propos
             <TextArea
+              rows="10"
               id="profileAbout"
               name="profileAbout"
               placeholder="A propos"

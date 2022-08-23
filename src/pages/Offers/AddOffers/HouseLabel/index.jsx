@@ -16,7 +16,7 @@ const HouseLabel = ({ nextButton, prevButton, handleChange, values, step }) => {
             <input
               className="bg-gray-50 border w-96 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               type="text"
-              placeholder="ex: Villa Belle Vue"
+              placeholder="Villa Belle Vue"
               onChange={(e) => {
                 handleChange("label", e.target.value);
                 console.log(values);
@@ -32,7 +32,7 @@ const HouseLabel = ({ nextButton, prevButton, handleChange, values, step }) => {
               cols="30"
               rows="10"
               onChange={(e) => handleChange("description", e.target.value)}
-              placeholder="Ex: Une maison paisible en bord de la mer"
+              placeholder="Une maison paisible en bord de la mer avec piscine, chauffage, jardin, terasse et bien d'autres. Composé de 4 pièces, ..."
             ></textarea>
           </label>
         </div>

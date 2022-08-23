@@ -199,6 +199,7 @@ const UpdateOffers = () => {
           <label htmlFor="accountDescription" className="flex flex-col">
             Description
             <TextArea
+              rows="10"
               id="accountDescription"
               name="accountDescription"
               placeholder="Description"
