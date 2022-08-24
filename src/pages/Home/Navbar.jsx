@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useRef } from "react";
 import { Link } from "react-router-dom";
 import { logoBlue } from "../../assets/images/images";
 import { FaBars, FaSearch } from "react-icons/fa";
@@ -7,7 +7,6 @@ import states from "../../states";
 import { MainContext } from "../../providers/main.provider";
 import { useNavigate } from "react-router-dom";
 import AuthService from "../../services/auth.service";
-import { useState } from "react";
 
 const Navbar = ({ className }) => {
   let { input, houseResults } = states;

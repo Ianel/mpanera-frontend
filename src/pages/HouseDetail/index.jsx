@@ -15,6 +15,8 @@ import {
 import { mac } from "../../assets/images/images";
 import Navbar from "../Home/Navbar";
 import usersService from "../../services/users.service";
+import Carousel from "react-elastic-carousel";
+import "./index.css";
 
 const HouseDetail = () => {
   const { id } = useParams();
@@ -73,12 +75,23 @@ const HouseDetail = () => {
         </div>
         <div className="flex my-4 gap-2">
           {console.log(paths.reverse())}
-          <img
-            className="w-1/2 object-cover rounded-l-lg"
+          {/* <img
+            className="w-full object-cover rounded-l-lg"
             src={`${PHOTO_URL}/${paths[0]}`}
             alt=""
-          />
-          <div className="w-1/2 flex flex-wrap gap-2">
+          /> */}
+          <Carousel>
+            {paths.map((path) => {
+              return (
+                <img
+                  className="w-full object-cover rounded-l-lg"
+                  src={`${PHOTO_URL}/${path}`}
+                  alt=""
+                />
+              );
+            })}
+          </Carousel>
+          {/* <div className="w-1/2 flex flex-wrap gap-2">
             <img
               className="w-[49%] object-cover"
               src={`${PHOTO_URL}/${paths[1]}`}
@@ -99,7 +112,7 @@ const HouseDetail = () => {
               src={`${PHOTO_URL}/${paths[4]}`}
               alt=""
             />
-          </div>
+          </div> */}
         </div>
         <div className="mt-8">
           <h3 className="text-2xl font-medium">
