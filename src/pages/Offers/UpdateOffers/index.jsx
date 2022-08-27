@@ -7,6 +7,7 @@ import { useSnapshot } from "valtio";
 import Input, { TextArea } from "../../../components/Input";
 import HomeLayout from "../../../layouts/HomeLayout/HomeLayout";
 import housesServices from "../../../services/houses.services";
+import servicesService from "../../../services/services.service";
 import states from "../../../states";
 import Navbar from "../../Home/Navbar";
 
@@ -24,6 +25,12 @@ const UpdateOffers = () => {
   const snapshot = useSnapshot(states);
 
   useEffect(async () => {
+    await servicesService
+      .getServicesById(id)
+      .then((response) => console.log(response.data.results))
+      .catch((error) => console.error(error))
+      .finally(() => console.log("Getting services done"));
+
     await housesServices
       .getHouse(id)
       .then((response) => {
@@ -215,6 +222,7 @@ const UpdateOffers = () => {
               className="border-none"
               multiple
               onChange={(e) => setImgCollection(e.target.files)}
+              required
             />
           </label>
         </div>

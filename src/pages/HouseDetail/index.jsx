@@ -179,56 +179,75 @@ const HouseDetail = () => {
           </div> */}
         </div>
         <hr className="my-8" />
-        <div className="w-1/2">
-          <h3 className="text-xl font-semibold my-4">
-            Equipements du logement
-          </h3>
-          <div className="flex text-lg flex-wrap justify-start items-center gap">
-            <p className=" leading-10 mr-4 flex items-center gap-4">
-              {services.running_water && (
-                <>
-                  <FaWater /> Eau courante
-                </>
-              )}
-            </p>
-            <p className=" leading-10 mr-4 flex items-center gap-4">
-              {services.interior_toilets && (
-                <>
-                  <FaToilet /> Toietttes intérieures
-                </>
-              )}
-            </p>
-            <p className=" leading-10 mr-4 flex items-center gap-4">
-              {services.garage && (
-                <>
-                  <FaHome /> Garage
-                </>
-              )}
-            </p>
-            <p className=" leading-10 mr-4 flex items-center gap-4">
-              {services.outdoor_toilets && (
-                <>
-                  <FaToiletPaper /> Toilettes extérieures
-                </>
-              )}
-            </p>
-            <p className=" leading-10 mr-4 flex items-center gap-4">
-              {services.swimming_pool && (
-                <>
-                  <FaSwimmingPool /> Piscine
-                </>
-              )}
-            </p>
-            <p className=" leading-10 mr-4 flex items-center gap-4">
-              {services.garden && (
-                <>
-                  <FaLeaf /> Jardin
-                </>
-              )}
-            </p>
-          </div>
-        </div>
-        <hr className="my-8" />
+        {services ? (
+          <>
+            <div className="w-1/2">
+              <h3 className="text-xl font-semibold my-4">
+                Equipements du logement
+              </h3>
+              <div className="flex text-lg flex-wrap justify-start items-center gap">
+                <p className=" leading-10 mr-4 flex items-center gap-4">
+                  {services
+                    ? services.running_water && (
+                        <>
+                          <FaWater /> Eau courante
+                        </>
+                      )
+                    : ""}
+                </p>
+                <p className=" leading-10 mr-4 flex items-center gap-4">
+                  {services
+                    ? services.interior_toilets && (
+                        <>
+                          <FaToilet /> Toietttes intérieures
+                        </>
+                      )
+                    : ""}
+                </p>
+                <p className=" leading-10 mr-4 flex items-center gap-4">
+                  {services
+                    ? services.garage && (
+                        <>
+                          <FaHome /> Garage
+                        </>
+                      )
+                    : ""}
+                </p>
+                <p className=" leading-10 mr-4 flex items-center gap-4">
+                  {services
+                    ? services.outdoor_toilets && (
+                        <>
+                          <FaToiletPaper /> Toilettes extérieures
+                        </>
+                      )
+                    : ""}
+                </p>
+                <p className=" leading-10 mr-4 flex items-center gap-4">
+                  {services
+                    ? services.swimming_pool && (
+                        <>
+                          <FaSwimmingPool /> Piscine
+                        </>
+                      )
+                    : ""}
+                </p>
+                <p className=" leading-10 mr-4 flex items-center gap-4">
+                  {services
+                    ? services.garden && (
+                        <>
+                          <FaLeaf /> Jardin
+                        </>
+                      )
+                    : ""}
+                </p>
+              </div>
+            </div>
+            <hr className="my-8" />
+          </>
+        ) : (
+          ""
+        )}
+
         <div>
           <h3 className="text-2xl font-medium mb-6">
             Proposé par {author.firstname} {author.lastname}
