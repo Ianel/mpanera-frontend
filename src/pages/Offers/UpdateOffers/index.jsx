@@ -19,6 +19,7 @@ const UpdateOffers = () => {
   const [openDate, setOpenDate] = useState("");
   const [userId, setUserId] = useState(null);
   const [imgCollection, setImgCollection] = useState([]);
+  const [services, setServices] = useState({});
 
   let navigate = useNavigate();
 
@@ -27,7 +28,7 @@ const UpdateOffers = () => {
   useEffect(async () => {
     await servicesService
       .getServicesById(id)
-      .then((response) => console.log(response.data.results))
+      .then((response) => setServices(response.data.results))
       .catch((error) => console.error(error))
       .finally(() => console.log("Getting services done"));
 
@@ -225,6 +226,105 @@ const UpdateOffers = () => {
               required
             />
           </label>
+          <div className="flex flex-col flex-wrap">
+            <h3>Services</h3>
+            <label htmlFor="interior_toilets">
+              Toilettes intérieures
+              <input
+                onChange={(e) =>
+                  setServices({
+                    ...services,
+                    interior_toilets: !services.interior_toilets,
+                  })
+                }
+                className="ml-2"
+                type="checkbox"
+                name="interior_toilets"
+                id="interior_toilets"
+                value={services.interior_toilets}
+                checked={services.interior_toilets ? true : false}
+              />
+            </label>
+            <label htmlFor="outdoor_toilets">
+              Toilettes extérieures
+              <input
+                onChange={(e) =>
+                  setServices({
+                    ...services,
+                    outdoor_toilets: !services.outdoor_toilets,
+                  })
+                }
+                className="ml-2"
+                type="checkbox"
+                name="outdoor_toilets"
+                id="outdoor_toilets"
+                value={services.outdoor_toilets}
+                checked={services.outdoor_toilets ? true : false}
+              />
+            </label>
+            <label htmlFor="running_water">
+              Eau courante
+              <input
+                onChange={(e) =>
+                  setServices({
+                    ...services,
+                    running_water: !services.running_water,
+                  })
+                }
+                className="ml-2"
+                type="checkbox"
+                name="running_water"
+                id="running_water"
+                value={services.running_water}
+                checked={services.running_water ? true : false}
+              />
+            </label>
+            <label htmlFor="garage">
+              Garage
+              <input
+                onChange={(e) =>
+                  setServices({ ...services, garage: !services.garage })
+                }
+                className="ml-2"
+                type="checkbox"
+                name="garage"
+                id="garage"
+                value={services.garage}
+                checked={services.garage ? true : false}
+              />
+            </label>
+            <label htmlFor="swimming_pool">
+              Piscine
+              <input
+                onChange={(e) =>
+                  setServices({
+                    ...services,
+                    swimming_pool: !services.swimming_pool,
+                  })
+                }
+                className="ml-2"
+                type="checkbox"
+                name="swimming_pool"
+                id="swimming_pool"
+                value={services.swimming_pool}
+                checked={services.swimming_pool ? true : false}
+              />
+            </label>
+            <label htmlFor="garden">
+              Jardin
+              <input
+                onChange={(e) =>
+                  setServices({ ...services, garden: !services.garden })
+                }
+                className="ml-2"
+                type="checkbox"
+                name="garden"
+                id="garden"
+                value={services.garden}
+                checked={services.garden ? true : false}
+              />
+            </label>
+          </div>
         </div>
         <button
           className="bg-blue-500 w-full text-white px-3 py-2 my-6 rounded-md"
@@ -279,6 +379,12 @@ const UpdateOffers = () => {
               .catch((error) => console.error(error));
 
             //navigate("/account");
+
+            await servicesService
+              .updateServices(services)
+              .then((res) => console.log(res.data.results))
+              .catch((error) => console.error(error))
+              .finally(() => console.log("Updating services done"));
           }}
         >
           Valider

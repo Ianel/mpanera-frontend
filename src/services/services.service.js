@@ -9,6 +9,13 @@ class ServicesService {
   getServicesById = (id) => {
     return axios.get(`${BASE_URL}/services/${id}`);
   };
+
+  updateServices = (services) => {
+    return axios.patch(
+      `${BASE_URL}/services/${services["services_id"]}`,
+      services
+    );
+  };
 }
 
 export default new ServicesService();

@@ -90,9 +90,10 @@ const HouseDetail = () => {
             alt=""
           /> */}
           <Carousel>
-            {paths.map((path) => {
+            {paths.map((path, index) => {
               return (
                 <img
+                  key={new Date() * index}
                   className="w-full h-[35rem] object-cover rounded-lg"
                   src={`${PHOTO_URL}/${path}`}
                   alt=""
