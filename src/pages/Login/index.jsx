@@ -27,7 +27,7 @@ const LoginPage = () => {
             <input
               className="w-full focus:outline-none focus:ring-2 focus:ring-blue-500 ring-1 ring-blue-500 outline-none rounded-md"
               type="tel"
-              placeholder="261328054689"
+              placeholder="0328054689"
               onChange={(e) => setPhoneNumber(e.target.value)}
             />
           </label>

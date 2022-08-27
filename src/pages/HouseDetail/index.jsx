@@ -66,7 +66,7 @@ const HouseDetail = () => {
 
   return (
     <HomeLayout>
-      <Navbar className="w-2/3 mx-auto py-4 relative z-20" />
+      <Navbar className="w-full mx-auto py-4 relative z-20" />
       <div className="mx-auto py-4 w-2/3 relative z-10">
         <h1 className="font-semibold text-2xl leading-10">{house.label}</h1>
         <div className="flex justify-between items-center gap-x-4">

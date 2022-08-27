@@ -24,7 +24,7 @@ const Card = ({ house }) => {
     <Link to={`/houses/${house.house_id}`} className="cursor-pointer">
       <div>
         <img
-          className="w-56 h-48 object-cover rounded-md"
+          className="w-48 h-32 object-cover rounded-md"
           src={`http://localhost:4000/${image}`}
           alt="Image of house"
         />

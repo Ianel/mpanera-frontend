@@ -18,41 +18,42 @@ const AccountCard = ({ house }) => {
   }, [house]);
 
   return (
-    <div className="shadow-lg w-64">
+    <div className="shadow-lg w-48">
       <Link to={`/houses/${house.house_id}`}>
         <img
-          className="w-full h-48 object-cover"
+          className="w-full h-32 object-cover"
           src={`http://localhost:4000/${image}`}
         />
       </Link>
       <div className="p-4">
-        <h2 className="font-semibold mb-4">{house.label}</h2>
-        <Link
-          to={`/offers/update/${house.house_id}`}
-          className="px-[81px] py-2 bg-blue-400 hover:bg-blue-700 text-white"
-        >
-          Modifier
-        </Link>
-        <br />
-        <button
-          onClick={async () => {
-            await housesServices
-              .deleteHousebyId(house.house_id)
-              .then((res) => {
-                console.log(res);
-                toast.success("Logement effacé");
-              })
-              .catch((error) => console.log(error))
-              .finally(() => console.log("Deletion done"));
+        <h2 className="font-semibold mb-2">{house.label}</h2>
+        <div className="flex flex-row justify-between items-center">
+          <Link
+            to={`/offers/update/${house.house_id}`}
+            className="text-blue-500 hover:font-bold text-center"
+          >
+            Modifier
+          </Link>
+          <button
+            onClick={async () => {
+              await housesServices
+                .deleteHousebyId(house.house_id)
+                .then((res) => {
+                  console.log(res);
+                  toast.success("Logement effacé");
+                })
+                .catch((error) => console.log(error))
+                .finally(() => console.log("Deletion done"));
 
-            setTimeout(() => {
-              window.location.reload();
-            }, 2000);
-          }}
-          className="w-full py-2 bg-red-400 hover:bg-red-700 text-white mt-3"
-        >
-          Supprimer
-        </button>
+              setTimeout(() => {
+                window.location.reload();
+              }, 2000);
+            }}
+            className="text-red-500 hover:font-bold"
+          >
+            Supprimer
+          </button>
+        </div>
       </div>
     </div>
   );

@@ -5,6 +5,7 @@ import toast from "react-hot-toast";
 import { useNavigate, useParams } from "react-router-dom";
 import { useSnapshot } from "valtio";
 import Input, { TextArea } from "../../../components/Input";
+import useIsMounted from "../../../hooks/useIsMounted";
 import HomeLayout from "../../../layouts/HomeLayout/HomeLayout";
 import housesServices from "../../../services/houses.services";
 import servicesService from "../../../services/services.service";
@@ -12,6 +13,8 @@ import states from "../../../states";
 import Navbar from "../../Home/Navbar";
 
 const UpdateOffers = () => {
+  const isMounted = useIsMounted();
+
   const { id } = useParams();
   const [houseType, setHouseType] = useState("");
   const [houseState, setHouseState] = useState("");
@@ -28,36 +31,42 @@ const UpdateOffers = () => {
   useEffect(async () => {
     await servicesService
       .getServicesById(id)
-      .then((response) => setServices(response.data.results))
+      .then((response) => {
+        if (isMounted.current) {
+          setServices(response.data.results);
+        }
+      })
       .catch((error) => console.error(error))
       .finally(() => console.log("Getting services done"));
 
     await housesServices
       .getHouse(id)
       .then((response) => {
-        setHouseType(response.data.results.house_type);
-        setHouseState(response.data.results.state);
-        setPublishedOn(response.data.results.published_on);
-        setUserId(response.data.results.user_id);
-        setOpenDate(response.data.results.open_date);
+        if (isMounted.current) {
+          setHouseType(response.data.results.house_type);
+          setHouseState(response.data.results.state);
+          setPublishedOn(response.data.results.published_on);
+          setUserId(response.data.results.user_id);
+          setOpenDate(response.data.results.open_date);
 
-        states.input.accountLabel = response.data.results.label;
-        states.input.accountPrice = response.data.results.rent_price;
-        states.input.accountRoomNumber = response.data.results.rooms_number;
-        states.input.accountPostalCode = response.data.results.postal_code;
-        states.input.accountArea = response.data.results.area;
-        states.input.accountCity = response.data.results.city;
-        states.input.accountRegion = response.data.results.region;
-        states.input.accountCountry = response.data.results.country;
-        states.input.accountAdress = response.data.results.adress;
-        states.input.accountPaymentDate = response.data.results.end_date;
-        states.input.accountDescription = response.data.results.description;
+          states.input.accountLabel = response.data.results.label;
+          states.input.accountPrice = response.data.results.rent_price;
+          states.input.accountRoomNumber = response.data.results.rooms_number;
+          states.input.accountPostalCode = response.data.results.postal_code;
+          states.input.accountArea = response.data.results.area;
+          states.input.accountCity = response.data.results.city;
+          states.input.accountRegion = response.data.results.region;
+          states.input.accountCountry = response.data.results.country;
+          states.input.accountAdress = response.data.results.adress;
+          states.input.accountPaymentDate = response.data.results.end_date;
+          states.input.accountDescription = response.data.results.description;
+        }
 
         console.log(response.data.results);
       })
       .catch((error) => console.error(error))
       .finally(() => console.log("Getting house done"));
-  }, []);
+  }, [id]);
 
   return (
     <HomeLayout>
@@ -226,22 +235,28 @@ const UpdateOffers = () => {
               required
             />
           </label>
+
           <div className="flex flex-col flex-wrap">
-            <h3>Services</h3>
+            <h3 className="mb-2">Services</h3>
+            <hr />
             <label htmlFor="interior_toilets">
               Toilettes intérieures
               <input
                 onChange={(e) =>
                   setServices({
                     ...services,
-                    interior_toilets: !services.interior_toilets,
+                    interior_toilets: !(services.interior_toilets
+                      ? services.interior_toilets
+                      : false),
                   })
                 }
                 className="ml-2"
                 type="checkbox"
                 name="interior_toilets"
                 id="interior_toilets"
-                value={services.interior_toilets}
+                value={
+                  services.interior_toilets ? services.interior_toilets : false
+                }
                 checked={services.interior_toilets ? true : false}
               />
             </label>
@@ -251,14 +266,18 @@ const UpdateOffers = () => {
                 onChange={(e) =>
                   setServices({
                     ...services,
-                    outdoor_toilets: !services.outdoor_toilets,
+                    outdoor_toilets: !services.outdoor_toilets
+                      ? services.outdoor_toilets
+                      : false,
                   })
                 }
                 className="ml-2"
                 type="checkbox"
                 name="outdoor_toilets"
                 id="outdoor_toilets"
-                value={services.outdoor_toilets}
+                value={
+                  services.outdoor_toilets ? services.outdoor_toilets : false
+                }
                 checked={services.outdoor_toilets ? true : false}
               />
             </label>
@@ -268,14 +287,16 @@ const UpdateOffers = () => {
                 onChange={(e) =>
                   setServices({
                     ...services,
-                    running_water: !services.running_water,
+                    running_water: !services.running_water
+                      ? services.running_water
+                      : false,
                   })
                 }
                 className="ml-2"
                 type="checkbox"
                 name="running_water"
                 id="running_water"
-                value={services.running_water}
+                value={services.running_water ? services.running_water : false}
                 checked={services.running_water ? true : false}
               />
             </label>
@@ -283,13 +304,16 @@ const UpdateOffers = () => {
               Garage
               <input
                 onChange={(e) =>
-                  setServices({ ...services, garage: !services.garage })
+                  setServices({
+                    ...services,
+                    garage: !services.garage ? services.garage : false,
+                  })
                 }
                 className="ml-2"
                 type="checkbox"
                 name="garage"
                 id="garage"
-                value={services.garage}
+                value={services.garage ? services.garage : false}
                 checked={services.garage ? true : false}
               />
             </label>
@@ -299,14 +323,16 @@ const UpdateOffers = () => {
                 onChange={(e) =>
                   setServices({
                     ...services,
-                    swimming_pool: !services.swimming_pool,
+                    swimming_pool: !services.swimming_pool
+                      ? services.swimming_pool
+                      : false,
                   })
                 }
                 className="ml-2"
                 type="checkbox"
                 name="swimming_pool"
                 id="swimming_pool"
-                value={services.swimming_pool}
+                value={services.swimming_pool ? services.swimming_pool : false}
                 checked={services.swimming_pool ? true : false}
               />
             </label>
@@ -314,13 +340,16 @@ const UpdateOffers = () => {
               Jardin
               <input
                 onChange={(e) =>
-                  setServices({ ...services, garden: !services.garden })
+                  setServices({
+                    ...services,
+                    garden: !services.garden ? services.garden : false,
+                  })
                 }
                 className="ml-2"
                 type="checkbox"
                 name="garden"
                 id="garden"
-                value={services.garden}
+                value={services.garden ? services.garden : false}
                 checked={services.garden ? true : false}
               />
             </label>
