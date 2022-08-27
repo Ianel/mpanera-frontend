@@ -1,4 +1,5 @@
 import React, { useReducer, useState } from "react";
+import HouseEquipments from "./HouseEquipments";
 import HouseImage from "./HouseImage";
 import HouseLabel from "./HouseLabel";
 import HouseLocation from "./HouseLocation";
@@ -24,6 +25,12 @@ const AddOffers = () => {
     adress: "",
     accessibility: "",
     rooms_number: "",
+    interior_toilets: false,
+    outdoor_toilets: false,
+    running_water: false,
+    garage: false,
+    garden: false,
+    swimming_pool: false,
   };
 
   const reducer = (state, action) => {
@@ -56,6 +63,18 @@ const AddOffers = () => {
         return { ...state, accessibility: action.value };
       case "rooms_number":
         return { ...state, rooms_number: action.value };
+      case "running_water":
+        return { ...state, running_water: action.value };
+      case "interior_toilets":
+        return { ...state, interior_toilets: action.value };
+      case "outdoor_toilets":
+        return { ...state, outdoor_toilets: action.value };
+      case "swimming_pool":
+        return { ...state, swimming_pool: action.value };
+      case "garage":
+        return { ...state, garage: action.value };
+      case "garden":
+        return { ...state, garden: action.value };
       default:
         return state;
     }
@@ -133,6 +152,16 @@ const AddOffers = () => {
         />
       );
     case 6:
+      return (
+        <HouseEquipments
+          nextButton={nextButton}
+          prevButton={prevButton}
+          handleChange={handleChange}
+          values={states}
+          step={step}
+        />
+      );
+    case 7:
       return (
         <HouseImage
           nextButton={nextButton}

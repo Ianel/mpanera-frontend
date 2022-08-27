@@ -21,7 +21,7 @@ const ProfilePage = () => {
     const userId = await authService.getUserId();
 
     await usersService
-      .getUser(userId)
+      .getUser(Number(userId))
       .then((user) => setSingleUser(user.data.results))
       .catch((error) => console.error(error));
   }, []);

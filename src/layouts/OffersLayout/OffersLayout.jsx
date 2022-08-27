@@ -8,7 +8,7 @@ const OffersLayout = ({
   end = false,
 }) => {
   return (
-    <div className="w-screen h-[92vh]">
+    <div className="w-full h-screen">
       <div className="px-8 py-4 flex justify-between items-center shadow-lg">
         <button
           className="rounded-lg bg-blue-500 text-white w-32 py-2"
@@ -16,7 +16,7 @@ const OffersLayout = ({
         >
           Retour
         </button>
-        <p>{step} / 6 </p>
+        <p>{step} / 7 </p>
         <button
           className="rounded-lg bg-blue-500 text-white w-32 py-2"
           onClick={nextButton != undefined ? nextButton : () => {}}

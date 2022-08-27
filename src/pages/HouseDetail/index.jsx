@@ -10,6 +10,7 @@ import {
   FaRegBookmark,
   FaSwimmingPool,
   FaToilet,
+  FaToiletPaper,
   FaWater,
 } from "react-icons/fa";
 import { mac } from "../../assets/images/images";
@@ -17,12 +18,14 @@ import Navbar from "../Home/Navbar";
 import usersService from "../../services/users.service";
 import Carousel from "react-elastic-carousel";
 import "./index.css";
+import servicesService from "../../services/services.service";
 
 const HouseDetail = () => {
   const { id } = useParams();
   const [house, setHouse] = useState({});
   const [housePhotos, setHousePhotos] = useState([]);
   const [author, setAuthor] = useState("");
+  const [services, setServices] = useState({});
 
   const PHOTO_URL = "http://localhost:4000";
 
@@ -36,6 +39,12 @@ const HouseDetail = () => {
           .then((user) => setAuthor(user.data.results))
           .catch((error) => console.error(error))
           .finally(() => console.log("Get author done"));
+
+        await servicesService
+          .getServicesById(id)
+          .then((res) => setServices(res.data.results))
+          .catch((error) => console.error(error))
+          .finally(() => console.log("Get services done"));
 
         await HousesServices.getHouseImagesById(
           response.data.results["house_id"]
@@ -84,7 +93,7 @@ const HouseDetail = () => {
             {paths.map((path) => {
               return (
                 <img
-                  className="w-full object-cover rounded-l-lg"
+                  className="w-full h-[35rem] object-cover rounded-lg"
                   src={`${PHOTO_URL}/${path}`}
                   alt=""
                 />
@@ -175,23 +184,47 @@ const HouseDetail = () => {
             Equipements du logement
           </h3>
           <div className="flex text-lg flex-wrap justify-start items-center gap">
-            <p className=" leading-10 w-1/2 flex items-center gap-4">
-              <FaWater /> Eau courante
+            <p className=" leading-10 mr-4 flex items-center gap-4">
+              {services.running_water && (
+                <>
+                  <FaWater /> Eau courante
+                </>
+              )}
             </p>
-            <p className=" leading-10 w-1/2 flex items-center gap-4">
-              <FaToilet /> Toietttes intérieures
+            <p className=" leading-10 mr-4 flex items-center gap-4">
+              {services.interior_toilets && (
+                <>
+                  <FaToilet /> Toietttes intérieures
+                </>
+              )}
             </p>
-            <p className=" leading-10 w-1/2 flex items-center gap-4">
-              <FaHome /> Garage
+            <p className=" leading-10 mr-4 flex items-center gap-4">
+              {services.garage && (
+                <>
+                  <FaHome /> Garage
+                </>
+              )}
             </p>
-            <p className=" leading-10 w-1/2 flex items-center gap-4">
-              <FaParking /> Parking
+            <p className=" leading-10 mr-4 flex items-center gap-4">
+              {services.outdoor_toilets && (
+                <>
+                  <FaToiletPaper /> Toilettes extérieures
+                </>
+              )}
             </p>
-            <p className=" leading-10 w-1/2 flex items-center gap-4">
-              <FaSwimmingPool /> Piscine
+            <p className=" leading-10 mr-4 flex items-center gap-4">
+              {services.swimming_pool && (
+                <>
+                  <FaSwimmingPool /> Piscine
+                </>
+              )}
             </p>
-            <p className=" leading-10 w-1/2 flex items-center gap-4">
-              <FaLeaf /> Jardin
+            <p className=" leading-10 mr-4 flex items-center gap-4">
+              {services.garden && (
+                <>
+                  <FaLeaf /> Jardin
+                </>
+              )}
             </p>
           </div>
         </div>

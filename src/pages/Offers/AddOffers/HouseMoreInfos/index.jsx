@@ -62,7 +62,7 @@ const HouseMoreInfos = ({
               <input
                 className="bg-gray-50 border w-96 border-gray-300 text-gray-900 text-sm rounded-r-lg focus:ring-blue-500 focus:border-blue-500 block p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 type="text"
-                placeholder="ex: 500"
+                placeholder="Supérficie"
                 onChange={(e) => handleChange("area", e.target.value)}
               />
             </div>
@@ -86,7 +86,7 @@ const HouseMoreInfos = ({
             <input
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               type="text"
-              placeholder="ex: 20"
+              placeholder="Jour du mois"
               onChange={(e) => handleChange("paymentDate", e.target.value)}
             />
           </label>
@@ -95,7 +95,7 @@ const HouseMoreInfos = ({
             <input
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               type="text"
-              placeholder="ex: 4"
+              placeholder="Nombre "
               onChange={(e) => handleChange("rooms_number", e.target.value)}
             />
           </label>

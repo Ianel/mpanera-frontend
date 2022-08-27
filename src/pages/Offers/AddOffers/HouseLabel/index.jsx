@@ -32,8 +32,8 @@ const HouseLabel = ({ nextButton, prevButton, handleChange, values, step }) => {
               cols="30"
               rows="10"
               onChange={(e) => handleChange("description", e.target.value)}
-              placeholder="Une maison paisible en bord de la mer avec piscine, chauffage, jardin, terasse et bien d'autres. Composé de 4 pièces, ..."
-            ></textarea>
+              placeholder="Veuillez décrire précisement votre logement: types de pièces, apparence génerale, équipements particuliers, ..."
+            />
           </label>
         </div>
       </div>

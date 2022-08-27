@@ -16,7 +16,7 @@ const HouseLocation = ({ nextButton, prevButton, handleChange, step }) => {
             <input
               className="bg-gray-50 border w-96 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               type="text"
-              placeholder="ex: Mahajanga"
+              placeholder="Ville"
               onChange={(e) => handleChange("city", e.target.value)}
             />
           </label>
@@ -25,7 +25,7 @@ const HouseLocation = ({ nextButton, prevButton, handleChange, step }) => {
             <input
               className="bg-gray-50 border w-96 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               type="text"
-              placeholder="ex: 401"
+              placeholder="Code postal"
               onChange={(e) => handleChange("postalCode", e.target.value)}
             />
           </label>
@@ -34,7 +34,7 @@ const HouseLocation = ({ nextButton, prevButton, handleChange, step }) => {
             <input
               className="bg-gray-50 border w-96 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               type="text"
-              placeholder="ex: Boeny"
+              placeholder="Région"
               onChange={(e) => handleChange("region", e.target.value)}
             />
           </label>
@@ -43,7 +43,7 @@ const HouseLocation = ({ nextButton, prevButton, handleChange, step }) => {
             <input
               className="bg-gray-50 border w-96 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               type="text"
-              placeholder="ex: Madagascar"
+              placeholder="Pays"
               onChange={(e) => handleChange("country", e.target.value)}
             />
           </label>
@@ -52,7 +52,7 @@ const HouseLocation = ({ nextButton, prevButton, handleChange, step }) => {
             <input
               className="bg-gray-50 border w-96 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               type="text"
-              placeholder="ex: Lot 220 Parcelle 2345 Antanimalandy"
+              placeholder="Adresse avec lot, parcelle et rue"
               onChange={(e) => handleChange("adress", e.target.value)}
             />
           </label>
