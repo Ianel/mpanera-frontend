@@ -16,8 +16,11 @@ import ProfileForm from "./ProfileForm";
 const ProfilePage = () => {
   const [show, setShow] = useState(false);
   const [singleUser, setSingleUser] = useState({});
+  const [token, setToken] = useState(null);
 
   useEffect(async () => {
+    setToken(authService.getUserToken());
+
     const userId = await authService.getUserId();
 
     await usersService
@@ -30,7 +33,7 @@ const ProfilePage = () => {
     <HomeLayout>
       <Navbar className="py-4" />
       <h1 className="text-xl font-bold mb-5">Profil</h1>
-      {authService.getUserToken() ? (
+      {token ? (
         singleUser.gender == null ? (
           <ProfileForm />
         ) : (
