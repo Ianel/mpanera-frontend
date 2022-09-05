@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { formatCurrency } from "../../constants/formatters";
 import housesServices from "../../services/houses.services";
 
 const Card = ({ house }) => {
@@ -35,7 +36,10 @@ const Card = ({ house }) => {
             <span className="ml-2 text-zinc-600">{house.city}</span>
           </div>
           <p>
-            <span className="font-bold">MGA {house.rent_price}</span> / mois
+            <span className="font-bold">
+              {formatCurrency(house.rent_price)}
+            </span>{" "}
+            / mois
           </p>
         </div>
       </div>
