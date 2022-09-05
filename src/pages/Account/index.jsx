@@ -25,7 +25,7 @@ const AccountPage = () => {
     <HomeLayout>
       <Navbar className="py-4" />
       <h1 className="text-xl font-bold mb-5">Compte</h1>
-      <div className="mx-8">
+      <div className="mx-8 h-[78vh]">
         {!token ? (
           <h2 className="text-center mt-80 text-xl">
             Veuillez vous connecter, s'il vous plaît

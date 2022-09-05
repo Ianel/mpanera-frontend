@@ -37,7 +37,7 @@ const ProfilePage = () => {
         singleUser.gender == null ? (
           <ProfileForm />
         ) : (
-          <>
+          <div className={`${!show ? "h-[78vh]" : "h-full"}`}>
             <div className="w-2/3 mx-auto flex flex-row py-4">
               <img
                 className="w-56 h-56 rounded-md object-cover"
@@ -119,7 +119,7 @@ const ProfilePage = () => {
                 </p>
               </div>
             </div>
-          </>
+          </div>
         )
       ) : (
         <p className="h-[75vh] flex flex-row justify-center items-center text-xl">

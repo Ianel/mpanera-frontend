@@ -4,8 +4,10 @@ import HousesServices from "../../services/houses.services";
 import HomeLayout from "../../layouts/HomeLayout/HomeLayout";
 import {
   FaBookmark,
+  FaEnvelope,
   FaHome,
   FaLeaf,
+  FaMapMarkerAlt,
   FaParking,
   FaPhoneAlt,
   FaRegBookmark,
@@ -250,7 +252,7 @@ const HouseDetail = () => {
           ""
         )}
 
-        <div>
+        <div className="mb-5">
           <h3 className="text-2xl font-medium mb-6">
             Proposé par {author.firstname} {author.lastname}
           </h3>
@@ -271,9 +273,12 @@ const HouseDetail = () => {
                   <FaPhoneAlt /> {author.phone_number}
                 </p>
                 <p className="flex flex-row justify-start items-center gap-x-2">
-                  <FaHome />
+                  <FaMapMarkerAlt />
                   {author.adress} {author.city} {author.postal_code},{" "}
                   {author.region}, {author.country}
+                </p>
+                <p className="flex flex-row justify-start items-center gap-x-2">
+                  <FaEnvelope /> {author.email}
                 </p>
               </div>
             </div>

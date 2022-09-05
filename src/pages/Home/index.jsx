@@ -24,7 +24,7 @@ const HomePage = () => {
     <HomeLayout>
       <Navbar className="py-4" />
       <TabBar className="py-2" />
-      <div className="flex flex-wrap justify-start gap-x-8 ">
+      <div className="flex flex-wrap justify-start gap-x-8 h-[75vh]">
         {/* {snapshot.houseResults.map((house, index) => {
           return <Card key={new Date() * index} />;
         })} */}
