@@ -35,6 +35,10 @@ class HouseService {
   getHouseImagesById = (id) => {
     return axios.get(`${BASE_URL}/images/${id}`);
   };
+
+  toggleHouseStatus = (id, isHouseActive) => {
+    return axios.post(`${BASE_URL}/houses/${id}`, isHouseActive);
+  };
 }
 
 export default new HouseService();

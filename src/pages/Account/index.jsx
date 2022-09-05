@@ -8,12 +8,14 @@ import Navbar from "../Home/Navbar";
 const AccountPage = () => {
   const [houses, setHouses] = useState([]);
   const userId = authService.getUserId();
+  const [token, setToken] = useState(null);
 
   useEffect(async () => {
     await housesServices
       .getAllHouses()
       .then(async (response) => {
         setHouses(response.data.results);
+        setToken(authService.getUserToken());
       })
       .catch((error) => console.error(error))
       .finally(() => console.log("Completed"));
@@ -24,7 +26,7 @@ const AccountPage = () => {
       <Navbar className="py-4" />
       <h1 className="text-xl font-bold mb-5">Compte</h1>
       <div className="mx-8">
-        {!authService.getUserToken() ? (
+        {!token ? (
           <h2 className="text-center mt-80 text-xl">
             Veuillez vous connecter, s'il vous plaît
           </h2>

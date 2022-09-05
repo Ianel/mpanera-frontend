@@ -5,9 +5,12 @@ import housesServices from "../../services/houses.services";
 
 const AccountCard = ({ house }) => {
   const [image, setImage] = useState(null);
+  const [toggleIsActive, setToggleIsActive] = useState(true);
   console.log(house);
 
   useEffect(() => {
+    setToggleIsActive(house.is_house_active);
+
     housesServices
       .getHouseImagesById(house.house_id)
       .then((images) => {
@@ -27,7 +30,7 @@ const AccountCard = ({ house }) => {
       </Link>
       <div className="p-4">
         <h2 className="font-semibold mb-2">{house.label}</h2>
-        <div className="flex flex-row justify-between items-center">
+        <div className="flex flex-row flex-wrap justify-between items-center">
           <Link
             to={`/offers/update/${house.house_id}`}
             className="text-blue-500 hover:font-bold text-center"
@@ -52,6 +55,24 @@ const AccountCard = ({ house }) => {
             className="text-red-500 hover:font-bold"
           >
             Supprimer
+          </button>
+          <button
+            className="text-gray-800 hover:font-bold"
+            onClick={async () => {
+              await setToggleIsActive((toggleIsActive) => !toggleIsActive);
+
+              await housesServices
+                .toggleHouseStatus(house.house_id, {
+                  isHouseActive: !toggleIsActive,
+                })
+                .then((res) => console.log(res.data.results))
+                .catch((error) => console.error(error))
+                .finally(() => console.log("Status changed"));
+            }}
+          >
+            {toggleIsActive == true
+              ? "Marquer comme occupé"
+              : "Marquer comme libre"}
           </button>
         </div>
       </div>

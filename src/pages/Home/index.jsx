@@ -32,7 +32,10 @@ const HomePage = () => {
           return <Card house={house} key={new Date() * index} />;
         })} */}
         {houses
-          .filter((house) => house.house_type === houseType)
+          .filter(
+            (house) =>
+              house.house_type === houseType && house.is_house_active == true
+          )
           .map((house, index) => {
             return <Card house={house} key={new Date() * index} />;
           })}
