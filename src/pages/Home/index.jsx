@@ -5,10 +5,13 @@ import HousesServices from "../../services/houses.services";
 import { MainContext } from "../../providers/main.provider";
 import TabBar from "./TabBar";
 import Navbar from "./Navbar";
+import { useSnapshot } from "valtio";
+import states from "../../states";
 
 const HomePage = () => {
   //let snapshot = useSnapshot(states);
   let { houses, setHouses, houseType } = useContext(MainContext);
+  const snapshot = useSnapshot(states);
 
   useEffect(async () => {
     await HousesServices.getAllHouses()
@@ -34,7 +37,11 @@ const HomePage = () => {
         {houses
           .filter(
             (house) =>
-              house.house_type === houseType && house.is_house_active == true
+              house.house_type === houseType && house.is_house_active === true
+          )
+          .filter(
+            (house) =>
+              house.rent_price <= (snapshot.input.searchRentPrice || 500000000)
           )
           .map((house, index) => {
             return <Card house={house} key={new Date() * index} />;
