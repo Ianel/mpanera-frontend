@@ -7,6 +7,7 @@ import {
   FaHome,
   FaLeaf,
   FaParking,
+  FaPhoneAlt,
   FaRegBookmark,
   FaSwimmingPool,
   FaToilet,
@@ -254,14 +255,28 @@ const HouseDetail = () => {
             Proposé par {author.firstname} {author.lastname}
           </h3>
           <div className="flex justify-start items-center gap-x-5">
-            <div className="">
+            <div className="w-56">
               <img
-                className="w-24 h-24 rounded-full object-cover"
+                className="w-32 h-32 rounded-full object-cover"
                 src={`http://localhost:4000/${author.profile_avatar}`}
                 alt=""
               />
             </div>
-            <p className="w-1/2 text-justify">{author.about}</p>
+            <div className="">
+              <h4 className="font-bold text-lg">A propos</h4>
+              <p className=" text-justify mb-3">{author.about}</p>
+              <h4 className="font-bold text-lg">Contact</h4>
+              <div className="flex flex-wrap flex-row justify-start gap-x-5 ">
+                <p className="flex flex-row justify-start items-center gap-x-2">
+                  <FaPhoneAlt /> {author.phone_number}
+                </p>
+                <p className="flex flex-row justify-start items-center gap-x-2">
+                  <FaHome />
+                  {author.adress} {author.city} {author.postal_code},{" "}
+                  {author.region}, {author.country}
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
