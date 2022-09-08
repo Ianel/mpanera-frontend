@@ -6,6 +6,7 @@ import AccountPage from "./pages/Account";
 import HomePage from "./pages/Home";
 import HouseDetail from "./pages/HouseDetail";
 import LoginPage from "./pages/Login";
+import ErrorPage from "./pages/Not Found";
 import OffersPage from "./pages/Offers";
 import AddOffers from "./pages/Offers/AddOffers";
 import UpdateOffers from "./pages/Offers/UpdateOffers";
@@ -19,6 +20,7 @@ const App = () => {
       <Router>
         <Toaster />
         <Routes>
+          <Route path={ROUTES.ERRORS} element={<ErrorPage />}></Route>
           <Route path={ROUTES.HOME} element={<HomePage />}></Route>
           <Route path={ROUTES.HOUSE_DETAIL} element={<HouseDetail />}></Route>
           <Route path={ROUTES.LOGIN} element={<LoginPage />}></Route>
