@@ -22,6 +22,7 @@ import usersService from "../../services/users.service";
 import Carousel from "react-elastic-carousel";
 import "./index.css";
 import servicesService from "../../services/services.service";
+import { formatCurrency } from "../../constants/formatters";
 
 const HouseDetail = () => {
   const { id } = useParams();
@@ -84,6 +85,9 @@ const HouseDetail = () => {
             {favorite ? <FaBookmark /> : <FaRegBookmark />}{" "}
             <span className="mx-2">Enregistrer</span>
           </button> */}
+          <h2 className="font-bold text-lg">
+            {formatCurrency(house.rent_price)} / mois
+          </h2>
         </div>
         <div className="flex my-4 gap-2">
           {console.log(paths.reverse())}

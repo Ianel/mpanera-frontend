@@ -74,7 +74,7 @@ const UpdateOffers = () => {
       <h2 className="text-lg font-bold text-center mb-4">
         Veuillez remplir les champs suivants
       </h2>
-      <form>
+      <form className="h-[78vh]">
         <div className="grid grid-cols-4 gap-3">
           <label htmlFor="accountLabel">
             Label
