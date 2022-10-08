@@ -7,6 +7,7 @@ import states from "../../states";
 import { MainContext } from "../../providers/main.provider";
 import { useNavigate } from "react-router-dom";
 import AuthService from "../../services/auth.service";
+import { capitalize } from "../../utils/string_helper";
 
 const Navbar = ({ className }) => {
   let { input, houseResults } = states;
@@ -31,13 +32,16 @@ const Navbar = ({ className }) => {
         />
         <button
           onClick={async () => {
-            await HousesServices.getHousesByCityName(input.city)
-              .then((response) => {
-                //houseResults = response.data.results;
-                setHouses(response.data.results);
-              })
-              .catch((error) => console.error(error))
-              .finally(() => console.log("Completed"));
+            console.log(typeof input.city);
+            input.city == "" || input.city == undefined
+              ? await window.location.reload()
+              : await HousesServices.getHousesByCityName(capitalize(input.city))
+                  .then((response) => {
+                    //houseResults = response.data.results;
+                    setHouses(response.data.results);
+                  })
+                  .catch((error) => console.error(error))
+                  .finally(() => console.log("Completed"));
           }}
           className="p-2 mx-2 bg-blue-500 hover:bg-blue-700 text-white shadow-lg rounded-full text-sm"
         >
